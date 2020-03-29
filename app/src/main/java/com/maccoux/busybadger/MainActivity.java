@@ -11,6 +11,7 @@ import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -101,5 +102,14 @@ public class MainActivity extends AppCompatActivity {
       int notificationId = 0;
       notificationManager.notify(notificationId, builder.build());
   }
+
+    /** This is the Onclick function to go to the views' screens
+     *
+     * @param v
+     */
+    public void onViewButton(View v) {
+        Intent intent = new Intent(this, HomeView.class);
+        startActivity(intent);
+    }
 
 }
