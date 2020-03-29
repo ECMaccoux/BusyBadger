@@ -8,6 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/colorBG</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:itemBackground">@color/colorBG</item>
     </style>
-
 </resources>

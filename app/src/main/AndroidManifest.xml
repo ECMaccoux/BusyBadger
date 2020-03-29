@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Dashboard"></activity>
+        <activity android:name=".HomeView"></activity>
     </application>
 
 </manifest>
