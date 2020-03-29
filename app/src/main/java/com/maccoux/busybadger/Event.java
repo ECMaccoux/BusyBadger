@@ -1,5 +1,7 @@
 package com.maccoux.busybadger;
 
+import android.location.Location;
+
 import androidx.room.*;
 import java.util.Date;
 
@@ -19,6 +21,9 @@ public class Event {
 
     @ColumnInfo(name = "datetime")
     private Date dateTime;
+
+    @ColumnInfo(name = "location")
+    private Location location;
 
     public String getName() {
         return name;
@@ -43,4 +48,8 @@ public class Event {
     public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
+
+    public Location getLocation() { return location; }
+
+    public void setLocation(Location location) { this.location = location; }
 }

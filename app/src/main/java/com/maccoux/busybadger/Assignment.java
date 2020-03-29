@@ -20,6 +20,9 @@ public class Assignment {
     @ColumnInfo(name = "dueDate")
     private Date dueDate;
 
+    @ColumnInfo(name = "progress")
+    private int progress;
+
     public String getName() {
         return name;
     }
@@ -43,4 +46,8 @@ public class Assignment {
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
+
+    public int getProgress() { return progress; }
+
+    public void setProgress(int progress) { this.progress = progress; }
 }
