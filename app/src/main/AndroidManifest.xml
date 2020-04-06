@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Dashboard"></activity>
-        <!--<activity android:name=".HomeView"></activity>-->
+        <activity android:name=".HomeView"></activity>
         <activity android:name=".AddEvent"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
