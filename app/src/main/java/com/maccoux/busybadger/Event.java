@@ -5,7 +5,7 @@ import android.location.Location;
 import androidx.room.*;
 import java.util.Date;
 
-@Entity
+@Entity(tableName = "event")
 public class Event {
 
     // TODO: Add repeat options, progress bar, location functionality

@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.room.ColumnInfo;
+import androidx.room.Room;
 
 import java.util.Date;
 
@@ -22,12 +23,15 @@ public class AddEvent extends AppCompatActivity {
     Date dateTime;
     Location location;
 
+    AppDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); // get the reference of Toolbar
         setSupportActionBar(toolbar); // Setting/replace toolbar as the ActionBar
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database").build();
 
         // implement setNavigationOnClickListener event
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -69,6 +73,7 @@ public class AddEvent extends AppCompatActivity {
         event.setDescription(description);
 
         //TODO: add code for setting the date/time and location
+
 
         return event;
     }

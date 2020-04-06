@@ -3,7 +3,7 @@ package com.maccoux.busybadger;
 import androidx.room.*;
 import java.util.Date;
 
-@Entity
+@Entity(tableName = "assignment")
 public class Assignment {
 
     // TODO: Add repeat options, progress bar, class assignment functionality

@@ -108,7 +108,12 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void onViewButton(View v) {
-        Intent intent = new Intent(this, HomeView.class);
+        //Intent intent = new Intent(this, HomeView.class);
+        //startActivity(intent);
+    }
+
+    public void onAddEventButton(View v) {
+        Intent intent = new Intent(this, AddEvent.class);
         startActivity(intent);
     }
 

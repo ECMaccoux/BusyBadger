@@ -21,8 +21,8 @@
 
     <EditText
         android:id="@+id/eventNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="339dp"
+        android:layout_height="44dp"
         android:ems="10"
         android:hint="Name of event"
         android:inputType="textPersonName"
@@ -30,12 +30,13 @@
         app:layout_constraintBottom_toTopOf="@+id/eventDescriptionText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.51" />
 
     <EditText
         android:id="@+id/eventDescriptionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="339dp"
+        android:layout_height="44dp"
         android:ems="10"
         android:hint="Description"
         android:inputType="textPersonName"
@@ -171,7 +172,7 @@
         android:id="@+id/addButton"
         android:layout_width="59dp"
         android:layout_height="62dp"
-        android:backgroundTint="#307965"
+        android:backgroundTint="#D32F2F"
         android:onClick="addButtonClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

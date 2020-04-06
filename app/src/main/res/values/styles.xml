@@ -10,4 +10,8 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:itemBackground">@color/colorBG</item>
     </style>
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

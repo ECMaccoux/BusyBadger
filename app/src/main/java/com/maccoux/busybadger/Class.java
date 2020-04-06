@@ -4,7 +4,7 @@ import androidx.room.*;
 
 import java.util.Date;
 
-@Entity
+@Entity(tableName = "class")
 public class Class {
 
     @PrimaryKey
