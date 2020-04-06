@@ -22,8 +22,8 @@ public class Event {
     @ColumnInfo(name = "datetime")
     private Date dateTime;
 
-    @ColumnInfo(name = "location")
-    private Location location;
+//    @ColumnInfo(name = "location")
+//    private Location location;
 
     public String getName() {
         return name;
@@ -49,7 +49,7 @@ public class Event {
         this.dateTime = dateTime;
     }
 
-    public Location getLocation() { return location; }
+//    public Location getLocation() { return location; }
 
-    public void setLocation(Location location) { this.location = location; }
+//    public void setLocation(Location location) { this.location = location; }
 }
