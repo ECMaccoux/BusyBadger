@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "BusyBadger";
             String description = "Notifications for Assignments or other School Events";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel = new NotificationChannel("1", name, importance);
             channel.setDescription(description);
 
@@ -85,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
         String textTitle = title;
         String textContent = body;
       NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "1")
-              .setSmallIcon(R.drawable.ic_launcher_background)
+              .setSmallIcon(R.drawable.ic_priority_high_black_24dp)
               .setContentTitle(textTitle)
               .setContentText(textContent)
-              .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+              .setPriority(NotificationCompat.PRIORITY_HIGH);
       return builder;
   }
 
