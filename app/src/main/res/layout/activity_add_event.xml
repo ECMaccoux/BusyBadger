@@ -21,59 +21,59 @@
 
     <EditText
         android:id="@+id/eventNameText"
-        android:layout_width="339dp"
-        android:layout_height="44dp"
+        android:layout_width="310dp"
+        android:layout_height="42dp"
         android:ems="10"
         android:hint="Name of event"
         android:inputType="textPersonName"
         android:textColorHint="#B0B0B0"
-        app:layout_constraintBottom_toTopOf="@+id/eventDescriptionText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.135" />
 
     <EditText
         android:id="@+id/eventDescriptionText"
-        android:layout_width="339dp"
-        android:layout_height="44dp"
+        android:layout_width="309dp"
+        android:layout_height="45dp"
         android:ems="10"
         android:hint="Description"
         android:inputType="textPersonName"
         android:textColorHint="#ABABAB"
-        app:layout_constraintBottom_toTopOf="@+id/dateButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.625" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.231" />
 
     <Button
         android:id="@+id/dateButton"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:layout_marginTop="176dp"
+        android:onClick="dateClick"
         android:text="Edit Date"
         android:textColor="#000000"
-        android:onClick="dateClick"
-        app:layout_constraintBottom_toTopOf="@+id/timeButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.328" />
 
     <Button
         android:id="@+id/timeButton"
         android:layout_width="140dp"
         android:layout_height="50dp"
+        android:onClick="timeClick"
         android:text="Edit Time"
         android:textColor="#000000"
-        android:onClick="timeClick"
-        app:layout_constraintBottom_toTopOf="@+id/repeatButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.92" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.425" />
 
     <Button
         android:id="@+id/repeatButton"
@@ -86,61 +86,57 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.54" />
+        app:layout_constraintVertical_bias="0.476" />
 
     <TextView
         android:id="@+id/textViewLocationDescription"
         android:layout_width="209dp"
         android:layout_height="56dp"
-        android:layout_marginTop="558dp"
         android:text="You can add a location to be displayed in Google Maps"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addButton"
-        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.301"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.859" />
 
     <TextView
         android:id="@+id/textViewProgress"
         android:layout_width="112dp"
         android:layout_height="25dp"
-        android:layout_marginTop="61dp"
         android:text="Progress Bar"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewProgressDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/checkBoxProgress"
-        app:layout_constraintHorizontal_bias="0.371"
+        app:layout_constraintHorizontal_bias="0.312"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/repeatButton"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.635" />
 
     <TextView
         android:id="@+id/textViewProgressDescription"
         android:layout_width="210dp"
         android:layout_height="32dp"
-        android:layout_marginTop="474dp"
         android:text="Adds a progress bar to the event"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.303"
+        app:layout_constraintHorizontal_bias="0.253"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.688" />
 
     <CheckBox
         android:id="@+id/checkBoxLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="528dp"
         android:buttonTint="#FFFFFF"
         android:drawableTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toEndOf="@+id/textViewLocation"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.725"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.781" />
 
     <CheckBox
         android:id="@+id/checkBoxProgress"
@@ -148,25 +144,25 @@
         android:layout_height="wrap_content"
         android:buttonTint="#FFFFFF"
         android:drawableTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/checkBoxLocation"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.728"
+        app:layout_constraintHorizontal_bias="0.725"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.905" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.642" />
 
     <TextView
         android:id="@+id/textViewLocation"
         android:layout_width="112dp"
         android:layout_height="25dp"
-        android:layout_marginTop="24dp"
         android:text="Location"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewLocationDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewProgressDescription" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.773" />
 
     <ImageButton
         android:id="@+id/addButton"
@@ -176,10 +172,10 @@
         android:onClick="addButtonClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintHorizontal_bias="0.906"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.935"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.907"
         app:srcCompat="@android:drawable/ic_input_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
