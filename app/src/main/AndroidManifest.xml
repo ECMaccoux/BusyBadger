@@ -15,6 +15,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".Dashboard"></activity>
+        <activity android:name=".AddEvent"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Settings"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".HomeView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddEvent"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
