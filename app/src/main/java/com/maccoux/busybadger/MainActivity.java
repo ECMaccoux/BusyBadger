@@ -6,19 +6,33 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Message;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         reqPermissions();
         createNotificationChannel();
+
+
     }
 
     /** This function asks for the permissions required
@@ -75,33 +91,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /** This is a function that builds the notifications given a title and body, will be adding more advanced functions later
-     *
-     * @param title string of title
-     * @param body string of body (what you want to say)
-     * @return notification builder object
-     */
-  public NotificationCompat.Builder buildNotification(String title,String body) {
-        String textTitle = title;
-        String textContent = body;
-      NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "1")
-              .setSmallIcon(R.drawable.ic_priority_high_black_24dp)
-              .setContentTitle(textTitle)
-              .setContentText(textContent)
-              .setPriority(NotificationCompat.PRIORITY_HIGH);
-      return builder;
-  }
-
     /** This is the Onclick function to test Notifications
      *
      * @param v
      */
   public void onTestNotify(View v) {
-    NotificationCompat.Builder builder = buildNotification("Test","This is a test Notification");
-      NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-      int notificationId = 0;
-      notificationManager.notify(notificationId, builder.build());
+      Event test = new Event();
+      Reminders reminder = new Reminders(Calendar.getInstance(),60,test,this);
+      reminder.setAlarm();
   }
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
 
     /** This is the Onclick function to go to the views' screens
      *
@@ -117,4 +119,34 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener  {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+            TimePickerDialog dialog = new TimePickerDialog(getActivity(),R.style.TimePicker,this, hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
+            // Create a new instance of TimePickerDialog and return it
+            return dialog;
+        }
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+            Calendar eventTime = Calendar.getInstance(TimeZone.getDefault());
+            eventTime.setTimeInMillis(System.currentTimeMillis());
+            eventTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
+            eventTime.set(Calendar.MINUTE,minute);
+            eventTime.set(Calendar.SECOND,0);
+            Event test = new Event();
+            Toast.makeText(getActivity(), ("Time SET!"+eventTime.getTime()), Toast.LENGTH_SHORT).show();
+            Reminders reminder = new Reminders(eventTime,60,test,getActivity());
+            reminder.setAlarm();
+        }
+
+
+    }
+
 }
+

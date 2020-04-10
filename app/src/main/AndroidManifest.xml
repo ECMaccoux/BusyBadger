@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".AddEvent"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <receiver android:name=".AlarmReceiver"/>
     </application>
 
 </manifest>
