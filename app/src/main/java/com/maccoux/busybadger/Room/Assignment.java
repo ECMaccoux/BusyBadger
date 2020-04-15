@@ -1,4 +1,4 @@
-package com.maccoux.busybadger;
+package com.maccoux.busybadger.Room;
 
 import androidx.room.*;
 import java.util.Date;

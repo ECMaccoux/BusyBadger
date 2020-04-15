@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.maccoux.busybadger.UIMain.SectionsPagerAdapter;
 public class HomeView extends AppCompatActivity {
@@ -43,7 +42,7 @@ public class HomeView extends AppCompatActivity {
 
         switch(item.getItemId()) {
             case R.id.TestButton:
-                intent = new Intent(this, MainActivity.class);
+                intent = new Intent(this, TestScreen.class);
                 startActivity(intent);
                 return true;
             case R.id.SettingsButton:

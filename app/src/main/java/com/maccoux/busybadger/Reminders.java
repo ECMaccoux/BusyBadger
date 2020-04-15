@@ -7,11 +7,9 @@ import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
 
-import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
-import com.maccoux.busybadger.Event;
+import com.maccoux.busybadger.Room.Event;
 
 public class Reminders {
     Calendar EventDate;

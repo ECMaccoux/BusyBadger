@@ -22,5 +22,16 @@
         <item name="android:colorBackground">@color/colorBG</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="CalendarViewHeaderText" parent="TextAppearance.MaterialCalendarWidget.Header">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="CalendarViewWeekDayText" parent="TextAppearance.MaterialCalendarWidget.WeekDay">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="CalendarViewDateText" parent="TextAppearance.MaterialCalendarWidget.Date">
+        <item name="android:textColor">@color/mcv_text_date_dark</item>
+    </style>
+
+
 
 </resources>

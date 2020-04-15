@@ -1,11 +1,7 @@
 package com.maccoux.busybadger;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
 import android.Manifest;
@@ -14,30 +10,27 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Message;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.maccoux.busybadger.Room.Event;
+
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TimeZone;
 
-public class MainActivity extends AppCompatActivity {
+public class TestScreen extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_testscreen);
         reqPermissions();
         createNotificationChannel();
 

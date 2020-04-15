@@ -1,4 +1,4 @@
-package com.maccoux.busybadger;
+package com.maccoux.busybadger.Room;
 
 import androidx.room.Dao;
 import androidx.room.Query;

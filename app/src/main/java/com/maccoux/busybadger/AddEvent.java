@@ -1,7 +1,6 @@
 package com.maccoux.busybadger;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -14,8 +13,10 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
-import androidx.room.ColumnInfo;
 import androidx.room.Room;
+
+import com.maccoux.busybadger.Room.AppDatabase;
+import com.maccoux.busybadger.Room.Event;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -45,7 +46,7 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(AddEvent.this, MainActivity.class);
+                Intent myIntent = new Intent(AddEvent.this, TestScreen.class);
                 myIntent.putExtra("event", ""); //Optional parameters
                 AddEvent.this.startActivity(myIntent);
             }

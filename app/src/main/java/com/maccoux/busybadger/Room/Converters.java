@@ -1,4 +1,4 @@
-package com.maccoux.busybadger;
+package com.maccoux.busybadger.Room;
 
 import androidx.room.TypeConverter;
 
