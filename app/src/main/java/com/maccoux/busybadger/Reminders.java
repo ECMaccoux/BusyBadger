@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
@@ -13,13 +14,13 @@ import com.maccoux.busybadger.Room.Event;
 
 public class Reminders {
     Calendar EventDate;
-    int ReminderTime; // Reminder time in MINUTES before event time
+    boolean[] ReminderTime;
     Event event;
     Context context;
     private AlarmManager alarmMgr;
     private PendingIntent alarmIntent;
 
-    public Reminders(Calendar EventDate,int ReminderTime,Event event,Context context) {
+    public Reminders(Calendar EventDate,boolean[] ReminderTime,Event event,Context context) {
         this.EventDate = EventDate;
         this.ReminderTime = ReminderTime;
         this.event = event;
@@ -34,12 +35,35 @@ public class Reminders {
         intent.putExtra(AlarmReceiver.NOT_ID,id);
         intent.putExtra(AlarmReceiver.NOT,notification);
         alarmIntent = PendingIntent.getBroadcast(context, id, intent, 0);
+        if(ReminderTime != null) {
+            for (int i = 0; i < ReminderTime.length; ++i) {
+                if (ReminderTime[i]) {
+                    switch (i) {
+                        case 0: // 15min
+                            EventDate.setTimeInMillis(EventDate.getTimeInMillis()-15*60*1000);
+                            alarmMgr.set(AlarmManager.RTC_WAKEUP,EventDate.getTimeInMillis(), alarmIntent);
+                            Toast.makeText(context, ("Reminder time for 15 mins ="+EventDate.getTime()), Toast.LENGTH_SHORT).show();
 
+                            break;
+                        case 1: // 1 hour
+                            alarmMgr.set(AlarmManager.RTC_WAKEUP, (EventDate.getTimeInMillis() - 60 * 60 * 1000), alarmIntent);
+                            break;
+
+                        case 2: // 1 day
+                            alarmMgr.set(AlarmManager.RTC_WAKEUP, (EventDate.getTimeInMillis() - 24 * 60 * 60 * 1000), alarmIntent);
+                            break;
+                    }
+                }
+            }
+        }
+        else {
+            alarmMgr.set(AlarmManager.RTC_WAKEUP,EventDate.getTimeInMillis(),alarmIntent);
+        }
         // Set the alarm to start at 3:00 p.m.
         //calendar.set(Calendar.HOUR_OF_DAY, 17);
         //calendar.set(Calendar.MINUTE, 13);
         //calendar.set(Calendar.MONTH,4);
-        alarmMgr.set(AlarmManager.RTC_WAKEUP,EventDate.getTimeInMillis(),alarmIntent);
+
         // setRepeating() lets you specify a precise custom interval--in this case,
         // 20 minutes.
 

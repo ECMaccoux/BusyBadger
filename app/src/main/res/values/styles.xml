@@ -22,6 +22,14 @@
         <item name="android:colorBackground">@color/colorBG</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="ReminderFragment" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowIsFloating">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:colorBackground">@color/colorBG</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
     <style name="CalendarViewHeaderText" parent="TextAppearance.MaterialCalendarWidget.Header">
         <item name="android:textColor">@android:color/white</item>
     </style>

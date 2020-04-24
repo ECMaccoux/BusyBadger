@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="316dp"
+        android:layout_height="142dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <CheckBox
+            android:id="@+id/checkBox15min"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="15 minutes before" />
+
+        <CheckBox
+            android:id="@+id/checkBox1day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1 day before" />
+
+        <CheckBox
+            android:id="@+id/checkBox1hour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1 hour before" />
+
+        <CheckBox
+            android:id="@+id/checkBox1week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1 week before" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -90,7 +90,7 @@ public class TestScreen extends AppCompatActivity {
      */
   public void onTestNotify(View v) {
       Event test = new Event();
-      Reminders reminder = new Reminders(Calendar.getInstance(),60,test,this);
+      Reminders reminder = new Reminders(Calendar.getInstance(),null,test,this);
       reminder.setAlarm();
   }
     public void showTimePickerDialog(View v) {
@@ -111,6 +111,11 @@ public class TestScreen extends AppCompatActivity {
         Intent intent = new Intent(this, AddEvent.class);
         startActivity(intent);
     }
+    public void timeSet(Context context, Calendar eventTime,Event event) {
+        Toast.makeText(context, ("Time SET!"+eventTime.getTime()), Toast.LENGTH_SHORT).show();
+        Reminders reminder = new Reminders(eventTime,null,event,context);
+        reminder.setAlarm();
+    }
 
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener  {
         @Override
@@ -126,16 +131,16 @@ public class TestScreen extends AppCompatActivity {
         }
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
             Calendar eventTime = Calendar.getInstance(TimeZone.getDefault());
             eventTime.setTimeInMillis(System.currentTimeMillis());
             eventTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
             eventTime.set(Calendar.MINUTE,minute);
             eventTime.set(Calendar.SECOND,0);
             Event test = new Event();
-            Toast.makeText(getActivity(), ("Time SET!"+eventTime.getTime()), Toast.LENGTH_SHORT).show();
-            Reminders reminder = new Reminders(eventTime,60,test,getActivity());
-            reminder.setAlarm();
+//            Toast.makeText(getActivity(), ("Time SET!"+eventTime.getTime()), Toast.LENGTH_SHORT).show();
+//            Reminders reminder = new Reminders(eventTime,null,test,getActivity());
+//            reminder.setAlarm();
+            ((TestScreen)getActivity()).timeSet(getActivity(),eventTime,test);
         }
 
 
