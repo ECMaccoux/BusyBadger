@@ -1,5 +1,6 @@
 package com.maccoux.busybadger;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +26,8 @@ import androidx.room.Room;
 
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Event;
+
+import java.lang.ref.WeakReference;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -39,7 +43,8 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
     Location location;
     boolean datePicked;
     boolean[]  checkOptions;
-    AppDatabase db;
+
+   public static AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +101,8 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addCompleteEvent();
+                //addCompleteEvent();
+                addButtonClick();
             }
         });
     }
@@ -146,6 +152,12 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
 
         return event;
     }
+
+    public void addButtonClick() {
+        // TEST CODE
+        new EventAsyncTask(this, "Test1", "Test event 1", new Date(0)).execute();
+    }
+
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener  {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -173,6 +185,26 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
         }
 
 
+    }
+
+    private static class EventAsyncTask extends AsyncTask<Void, Void, Integer> {
+        private WeakReference<Activity> weakActivity;
+        private String name;
+        private String description;
+        private Date dateTime;
+
+        public EventAsyncTask(Activity activity, String name, String description, Date dateTime) {
+            weakActivity = new WeakReference<>(activity);
+            this.name = name;
+            this.description = description;
+            this.dateTime = dateTime;
+        }
+
+        @Override
+        protected Integer doInBackground(Void... params) {
+            db.eventDao().insert(new Event(name, description, dateTime));
+            return 0;
+        }
     }
 
 }

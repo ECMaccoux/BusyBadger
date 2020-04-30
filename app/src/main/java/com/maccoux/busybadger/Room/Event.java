@@ -10,7 +10,7 @@ public class Event {
 
     // TODO: Add repeat options, progress bar, location functionality
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int eID;
 
     @ColumnInfo(name = "name")
@@ -24,6 +24,16 @@ public class Event {
 
 //    @ColumnInfo(name = "location")
 //    private Location location;
+
+    public Event() {
+
+    }
+
+    public Event(String name, String description, Date dateTime) {
+        this.name = name;
+        this.description = description;
+        this.dateTime = dateTime;
+    }
 
     public String getName() {
         return name;
