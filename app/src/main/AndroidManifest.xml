@@ -53,6 +53,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBqa3ukVkF7N4yrq8Z0V3XF3DSXk4_7FtU" />
         <receiver android:name=".AlarmReceiver"/>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

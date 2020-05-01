@@ -3,4 +3,8 @@
     <string name="Planner">Planner</string>
     <string name="Today">Today</string>
     <string name="Calendar">Calendar</string>
+    <string name="title">Event Name</string>
+    <string name="secondaryText">date</string>
+    <string name="somethingElse">quick description</string>
 </resources>
+

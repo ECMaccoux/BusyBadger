@@ -29,7 +29,12 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-
+        if(position == 0) {
+            return new PlannerFragment();
+        }
+        if(position == 1) {
+            return new TodayFragment();
+        }
         if(position == 2) {
             return CalendarFragment.newInstance();
         }
