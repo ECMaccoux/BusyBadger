@@ -120,7 +120,7 @@ public class AddEvent extends AppCompatActivity {
         Reminders reminder = new Reminders(c,checkOptions,event,this);
         reminder.setAlarm();
 
-        new InsertEventAsyncTask(this, event);
+        new InsertEventAsyncTask(this, event).execute();
 
         Toast.makeText(getApplicationContext(), "Event added!", Toast.LENGTH_SHORT).show();
 
