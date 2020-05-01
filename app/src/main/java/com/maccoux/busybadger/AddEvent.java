@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.room.Room;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Event;
@@ -36,8 +38,10 @@ public class AddEvent extends AppCompatActivity {
     int eID;
     String name;
     String description;
-    Location location;
+    LatLng location;
+
     boolean datePicked;
+    boolean locationPicked;
     boolean[]  checkOptions;
 
     public static AppDatabase db;
@@ -50,8 +54,9 @@ public class AddEvent extends AppCompatActivity {
         setSupportActionBar(toolbar); // Setting/replace toolbar as the ActionBar
 
         // Gets reference to Room database
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database").build();
+        db = AppDatabase.getAppDatabase(this);
         datePicked = false;
+        locationPicked = false;
 
         Event event = new Event();
 
@@ -101,6 +106,10 @@ public class AddEvent extends AppCompatActivity {
             return;
         }
         event.setCalendar(c);
+
+        if(locationPicked) {
+            event.setLocation(location);
+        }
 
         // Notification Functionality
         CheckBox check15 = findViewById(R.id.checkBox15min2);
@@ -156,6 +165,11 @@ public class AddEvent extends AppCompatActivity {
         timePickerDialog.show();
     }
 
+    public void onAddLocationButton(View view) {
+        Intent intent = new Intent(this, LocationPicker.class);
+        startActivityForResult(intent, 1);
+    }
+
     // This AsyncTask class inserts new events into the Room database in a background thread
     private static class InsertEventAsyncTask extends AsyncTask<Void, Void, Integer> {
         private WeakReference<Activity> weakActivity;
@@ -168,8 +182,19 @@ public class AddEvent extends AppCompatActivity {
 
         @Override
         protected Integer doInBackground(Void... params) {
+            //android.os.Debug.waitForDebugger();
             db.eventDao().insert(event);
             return 0;
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                location = new LatLng(data.getDoubleExtra("latitude", 0), data.getDoubleExtra("longitude", 0));
+                locationPicked = true;
+            }
         }
     }
 

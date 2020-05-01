@@ -4,6 +4,8 @@ import android.location.Location;
 
 import androidx.room.*;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Calendar;
 
 @Entity(tableName = "event")
@@ -21,7 +23,13 @@ public class Event {
     private String description;
 
     @ColumnInfo(name = "datetime")
-    public Calendar c;
+    private Calendar calendar;
+
+    @ColumnInfo(name = "latitude")
+    private double latitude;
+
+    @ColumnInfo(name = "longitude")
+    private double longitude;
 
 //    @ColumnInfo(name = "location")
 //    private Location location;
@@ -30,10 +38,12 @@ public class Event {
 
     }
 
-    public Event(String name, String description, Calendar c) {
+    public Event(String name, String description, Calendar c, LatLng location) {
         this.name = name;
         this.description = description;
-        this.c = c;
+        this.calendar = calendar;
+        this.latitude = location.latitude;
+        this.longitude = location.longitude;
     }
 
     public String getName() {
@@ -52,11 +62,22 @@ public class Event {
         this.description = description;
     }
 
-    public Calendar getCalendar() { return c; }
+    public Calendar getCalendar() { return calendar; }
 
-    public void setCalendar(Calendar c) { this.c = c; }
+    public void setCalendar(Calendar c) { this.calendar = calendar; }
 
-//    public Location getLocation() { return location; }
+    public LatLng getLocation() { return new LatLng(latitude, longitude); }
 
-//    public void setLocation(Location location) { this.location = location; }
+    public double getLatitude() { return latitude; }
+
+    public double getLongitude() { return longitude; }
+
+    public void setLatitude(double latitude) { this.latitude = latitude; }
+
+    public void setLongitude(double longitude) { this.longitude = longitude; }
+
+    public void setLocation(LatLng location) {
+        this.latitude = location.latitude;
+        this.longitude = location.longitude;
+    }
 }

@@ -40,5 +40,10 @@ dependencies {
     def room_version = "2.2.5"
 
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.libraries.places:places:1.1.0'
+// For Kotlin use kapt instead of annotationProcessor
 }
