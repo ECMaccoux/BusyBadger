@@ -1,11 +1,11 @@
 package com.maccoux.busybadger;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -24,6 +24,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 import androidx.room.Room;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Event;
 
@@ -33,7 +34,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+//public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class AddEvent extends AppCompatActivity {
 
     Calendar c;
     int eID;
@@ -44,7 +46,7 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
     boolean datePicked;
     boolean[]  checkOptions;
 
-   public static AppDatabase db;
+    public static AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +54,24 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
         setContentView(R.layout.activity_add_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); // get the reference of Toolbar
         setSupportActionBar(toolbar); // Setting/replace toolbar as the ActionBar
+
+        // Gets reference to Room database
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database").build();
+        datePicked = false;
 
         // implement setNavigationOnClickListener event
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent myIntent = new Intent(AddEvent.this, TestScreen.class);
-                myIntent.putExtra("event", ""); //Optional parameters
-                AddEvent.this.startActivity(myIntent);
-            }
+            public void onClick(View view) { finish(); }
         });
 
-        //TODO: add code for launching the calendar picker for date/time
+        FloatingActionButton addEventButton = (FloatingActionButton)findViewById(R.id.addEventButton);
+        addEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { addCompleteEvent(v); }
+        });
+
+        /*//TODO: add code for launching the calendar picker for date/time
         Button dateButton = (Button) findViewById(R.id.dateButton);
         Button timeButton = (Button) findViewById(R.id.timeButton);
         //Button repeatButton = (Button) findViewById(R.id.repeatButton);
@@ -73,6 +80,7 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
             @Override
             public void onClick(View v) {
                 DialogFragment datePicker = new DatePickerFragment();
+                datePicker.setStyle(DialogFragment.STYLE_NORMAL, R.style.DatePicker);
                 datePicker.show(getSupportFragmentManager(), "date picker");
             }
         });
@@ -80,9 +88,9 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
             @Override
             public void onClick(View v) {
                 DialogFragment TimePicker = new AddEvent.TimePickerFragment();
-                TimePicker.show(getSupportFragmentManager(), "time picker");
+        -        TimePicker.show(getSupportFragmentManager(), "time picker");
             }
-        });
+        });*/
 // TODO: FIX CODE FOR POPUP REMINDER DIALOG
 //        repeatButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -97,39 +105,25 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
 
 
         //code for clicking the actual "+" button
-        ImageButton button = (ImageButton) findViewById(R.id.addButton);
+        /* button = (ImageButton) findViewById(R.id.addButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //addCompleteEvent();
-                addButtonClick();
+                addCompleteEvent();
             }
-        });
-    }
-    public void timeSet(Context context, Calendar eventTime, Event event) {
-        c.set(Calendar.HOUR_OF_DAY,eventTime.get(Calendar.HOUR_OF_DAY));
-        c.set(Calendar.MINUTE,eventTime.get(Calendar.MINUTE));
-        c.set(Calendar.SECOND,0);
-        Toast.makeText(context, ("Time SET!"+c.getTime()), Toast.LENGTH_SHORT).show();
-        Reminders reminder = new Reminders(c,null,event,context);
-        reminder.setAlarm();
-    }
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int day) {
-        c = Calendar.getInstance();
-        c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH, month);
-        c.set(Calendar.DAY_OF_MONTH, day);
-        //this pulls the actual Date data
-        String dateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        });*/
     }
 
-    private Event addCompleteEvent() {
+    public void addCompleteEvent(View view) {
 
         Event event = new Event();
 
         EditText nameText = (EditText) findViewById(R.id.eventNameText);
         name = nameText.getText().toString();
+        if(name.equals("")) {
+            Toast.makeText(getApplicationContext(), "Please enter a name for this event", Toast.LENGTH_SHORT).show();
+            return;
+        }
         event.setName(name);
 
         EditText descriptionText = (EditText) findViewById(R.id.eventDescriptionText);
@@ -148,16 +142,32 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
         checkOptions = new boolean[]{check15.isChecked(), check1hour.isChecked(), check1day.isChecked(), check1week.isChecked()};
         Reminders reminder = new Reminders(c,checkOptions,event,this);
         reminder.setAlarm();
-
-
-        return event;
     }
 
-    public void addButtonClick() {
-        // TEST CODE
-        new EventAsyncTask(this, "Test1", "Test event 1", new Date(0)).execute();
+    public void onDateButtonClicked(View view) {
+
     }
 
+    /*public void timeSet(Context context, Calendar eventTime, Event event) {
+        c.set(Calendar.HOUR_OF_DAY,eventTime.get(Calendar.HOUR_OF_DAY));
+        c.set(Calendar.MINUTE,eventTime.get(Calendar.MINUTE));
+        c.set(Calendar.SECOND,0);
+        Toast.makeText(context, ("Time SET!"+c.getTime()), Toast.LENGTH_SHORT).show();
+        Reminders reminder = new Reminders(c,null,event,context);
+        reminder.setAlarm();
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int day) {
+        c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, day);
+        //this pulls the actual Date data
+        String dateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+    }
+
+    // Time Picker dialog
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener  {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -185,15 +195,16 @@ public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDa
         }
 
 
-    }
+    }*/
 
-    private static class EventAsyncTask extends AsyncTask<Void, Void, Integer> {
+    // This AsyncTask class inserts new events into the Room database in a background thread
+    private static class InsertEventAsyncTask extends AsyncTask<Void, Void, Integer> {
         private WeakReference<Activity> weakActivity;
         private String name;
         private String description;
         private Date dateTime;
 
-        public EventAsyncTask(Activity activity, String name, String description, Date dateTime) {
+        public InsertEventAsyncTask(Activity activity, String name, String description, Date dateTime) {
             weakActivity = new WeakReference<>(activity);
             this.name = name;
             this.description = description;

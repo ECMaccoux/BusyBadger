@@ -11,8 +11,7 @@
         android:layout_height="101dp"
         app:layout_constraintBottom_toTopOf="@+id/textViewProgress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeButton">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,21 +89,7 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.231" />
 
-    <Button
-        android:id="@+id/dateButton"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:onClick="dateClick"
-        android:text="Edit Date"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
-
-    <Button
+    <!--<Button
         android:id="@+id/timeButton"
         android:layout_width="140dp"
         android:layout_height="50dp"
@@ -116,7 +101,21 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425" />
+        app:layout_constraintVertical_bias="0.425" />-->
+
+    <Button
+        android:id="@+id/dateTimeButton"
+        android:layout_width="110dp"
+        android:layout_height="49dp"
+        android:text="Set Date"
+        android:textColor="#000000"
+        android:onClick="onDateButtonClicked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.335" />
 
     <TextView
         android:id="@+id/textViewLocationDescription"
@@ -194,20 +193,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.773" />
 
-    <ImageButton
-        android:id="@+id/addButton"
-        android:layout_width="59dp"
-        android:layout_height="62dp"
-        android:backgroundTint="#D32F2F"
-        android:onClick="addButtonClick"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.911"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -219,5 +204,30 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <TextView
+        android:id="@+id/setDateText"
+        android:layout_width="176dp"
+        android:layout_height="46dp"
+        android:text="No date/time set"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.334" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addEventButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="32dp"
+        android:clickable="true"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:rippleColor="@color/colorAccentDark"
+        app:srcCompat="@drawable/ic_add_white_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,17 +8,27 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/colorBG</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:itemBackground">@color/colorBG</item>
     </style>
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="TimePicker" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowIsFloating">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:colorBackground">@color/colorBG</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="DatePicker" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:windowIsFloating">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:colorBackground">@color/colorBG</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
