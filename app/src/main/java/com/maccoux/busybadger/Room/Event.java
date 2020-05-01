@@ -7,6 +7,7 @@ import androidx.room.*;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Calendar;
+import java.util.Date;
 
 @Entity(tableName = "event")
 public class Event {
@@ -23,16 +24,13 @@ public class Event {
     private String description;
 
     @ColumnInfo(name = "datetime")
-    private Calendar calendar;
+    private Date date;
 
     @ColumnInfo(name = "latitude")
     private double latitude;
 
     @ColumnInfo(name = "longitude")
     private double longitude;
-
-//    @ColumnInfo(name = "location")
-//    private Location location;
 
     public Event() {
 
@@ -41,7 +39,7 @@ public class Event {
     public Event(String name, String description, Calendar c, LatLng location) {
         this.name = name;
         this.description = description;
-        this.calendar = calendar;
+        this.date = c.getTime();
         this.latitude = location.latitude;
         this.longitude = location.longitude;
     }
@@ -62,9 +60,9 @@ public class Event {
         this.description = description;
     }
 
-    public Calendar getCalendar() { return calendar; }
+    public Date getDate() { return date; }
 
-    public void setCalendar(Calendar c) { this.calendar = calendar; }
+    public void setDate(Date date) { this.date = date; }
 
     public LatLng getLocation() { return new LatLng(latitude, longitude); }
 
