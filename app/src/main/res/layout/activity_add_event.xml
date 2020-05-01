@@ -5,48 +5,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="262dp"
-        android:layout_height="101dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewProgress"
+    <CheckBox
+        android:id="@+id/checkBox15min2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15 minutes before"
+        android:textSize="12sp"
+        android:buttonTint="#FFFFFF"
+        android:drawableTint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <CheckBox
+        android:id="@+id/checkBox1hour2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 hour before"
+        android:textSize="12sp"
+        android:buttonTint="#FFFFFF"
+        android:drawableTint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.715"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464" />
 
-            <CheckBox
-                android:id="@+id/checkBox15min2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="15 minutes before"
-                android:textSize="12sp" />
+    <CheckBox
+        android:id="@+id/checkBox1day2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 day before"
+        android:textSize="12sp"
+        android:buttonTint="#FFFFFF"
+        android:drawableTint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.547" />
 
-            <CheckBox
-                android:id="@+id/checkBox1hour2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1 hour before"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/checkBox1day2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1 day before"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/checkBox1week2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1 week before"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </ScrollView>
+    <CheckBox
+        android:id="@+id/checkBox1week2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 week before"
+        android:textSize="12sp"
+        android:buttonTint="#FFFFFF"
+        android:drawableTint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.724"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.546" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -107,9 +128,9 @@
         android:id="@+id/dateTimeButton"
         android:layout_width="110dp"
         android:layout_height="49dp"
+        android:onClick="onDateButtonClicked"
         android:text="Set Date"
         android:textColor="#000000"
-        android:onClick="onDateButtonClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.83"
@@ -197,20 +218,20 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginBottom="7dp"
         android:text="Reminders"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.412" />
 
     <TextView
         android:id="@+id/setDateText"
         android:layout_width="176dp"
         android:layout_height="46dp"
-        android:text="No date/time set"
         android:gravity="center"
+        android:text="No date/time set"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.217"
@@ -225,8 +246,8 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="32dp"
         android:clickable="true"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:rippleColor="@color/colorAccentDark"
         app:srcCompat="@drawable/ic_add_white_24dp" />
 
