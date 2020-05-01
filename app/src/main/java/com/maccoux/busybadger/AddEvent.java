@@ -1,27 +1,21 @@
 package com.maccoux.busybadger;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.DialogFragment;
 import androidx.room.Room;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,18 +24,17 @@ import com.maccoux.busybadger.Room.Event;
 
 import java.lang.ref.WeakReference;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import java.util.Locale;
 
 //public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 public class AddEvent extends AppCompatActivity {
 
-    Calendar c;
+    final Calendar c = Calendar.getInstance();
     int eID;
     String name;
     String description;
-    Date dateTime;
     Location location;
     boolean datePicked;
     boolean[]  checkOptions;
@@ -58,6 +51,8 @@ public class AddEvent extends AppCompatActivity {
         // Gets reference to Room database
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database").build();
         datePicked = false;
+
+        Event event = new Event();
 
         // implement setNavigationOnClickListener event
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -131,9 +126,9 @@ public class AddEvent extends AppCompatActivity {
         event.setDescription(description);
 
         //TODO: add code for setting the date/time and location
-        if (datePicked) {
+        /*if (datePicked) {
             dateTime = c.getTime();
-        }
+        }*/
         // Notification Functionality
         CheckBox check15 = findViewById(R.id.checkBox15min2);
         CheckBox check1hour = findViewById(R.id.checkBox1hour2);
@@ -145,7 +140,40 @@ public class AddEvent extends AppCompatActivity {
     }
 
     public void onDateButtonClicked(View view) {
+        datePicker();
+    }
 
+    private void setDateTimeText() {
+        TextView dateTimeText = (TextView)findViewById(R.id.setDateText);
+        String newText = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.DAY_OF_WEEK)
+                + ", " + c.get(Calendar.YEAR) + "\n" + c.get(Calendar.HOUR)
+                + ":" + String.format("%02d", c.get(Calendar.MINUTE)) + " " + c.getDisplayName(Calendar.AM_PM, Calendar.LONG, Locale.getDefault());
+
+        dateTimeText.setText(newText);
+    }
+
+    private void datePicker() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DatePicker, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                c.set(year, month, day);
+                timePicker();
+            }
+        }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+
+    private void timePicker() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, R.style.TimePicker, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                c.set(Calendar.HOUR_OF_DAY, hour);
+                c.set(Calendar.MINUTE, minute);
+
+                setDateTimeText();
+            }
+        }, c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), false);
+        timePickerDialog.show();
     }
 
     /*public void timeSet(Context context, Calendar eventTime, Event event) {
@@ -202,18 +230,18 @@ public class AddEvent extends AppCompatActivity {
         private WeakReference<Activity> weakActivity;
         private String name;
         private String description;
-        private Date dateTime;
+        private Calendar c;
 
-        public InsertEventAsyncTask(Activity activity, String name, String description, Date dateTime) {
+        public InsertEventAsyncTask(Activity activity, String name, String description, Calendar c) {
             weakActivity = new WeakReference<>(activity);
             this.name = name;
             this.description = description;
-            this.dateTime = dateTime;
+            this.c = c;
         }
 
         @Override
         protected Integer doInBackground(Void... params) {
-            db.eventDao().insert(new Event(name, description, dateTime));
+            db.eventDao().insert(new Event(name, description, c));
             return 0;
         }
     }

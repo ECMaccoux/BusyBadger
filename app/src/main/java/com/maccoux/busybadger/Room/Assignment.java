@@ -1,7 +1,8 @@
 package com.maccoux.busybadger.Room;
 
 import androidx.room.*;
-import java.util.Date;
+
+import java.util.Calendar;
 
 @Entity(tableName = "assignment")
 public class Assignment {
@@ -18,7 +19,7 @@ public class Assignment {
     private String description;
 
     @ColumnInfo(name = "dueDate")
-    private Date dueDate;
+    private Calendar dueDate;
 
     @ColumnInfo(name = "progress")
     private int progress;
@@ -39,11 +40,11 @@ public class Assignment {
         this.description = description;
     }
 
-    public Date getDueDate() {
+    public Calendar getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(Calendar dueDate) {
         this.dueDate = dueDate;
     }
 

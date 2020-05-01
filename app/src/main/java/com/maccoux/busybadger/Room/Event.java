@@ -3,7 +3,8 @@ package com.maccoux.busybadger.Room;
 import android.location.Location;
 
 import androidx.room.*;
-import java.util.Date;
+
+import java.util.Calendar;
 
 @Entity(tableName = "event")
 public class Event {
@@ -20,7 +21,7 @@ public class Event {
     private String description;
 
     @ColumnInfo(name = "datetime")
-    private Date dateTime;
+    public Calendar c;
 
 //    @ColumnInfo(name = "location")
 //    private Location location;
@@ -29,10 +30,10 @@ public class Event {
 
     }
 
-    public Event(String name, String description, Date dateTime) {
+    public Event(String name, String description, Calendar c) {
         this.name = name;
         this.description = description;
-        this.dateTime = dateTime;
+        this.c = c;
     }
 
     public String getName() {
@@ -51,13 +52,9 @@ public class Event {
         this.description = description;
     }
 
-    public Date getDateTime() {
-        return dateTime;
-    }
+    public Calendar getCalendar() { return c; }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
-    }
+    public void setCalendar(Calendar c) { this.c = c; }
 
 //    public Location getLocation() { return location; }
 

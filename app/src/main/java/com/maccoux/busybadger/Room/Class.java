@@ -2,7 +2,7 @@ package com.maccoux.busybadger.Room;
 
 import androidx.room.*;
 
-import java.util.Date;
+import java.util.Calendar;
 
 @Entity(tableName = "class")
 public class Class {
@@ -17,19 +17,19 @@ public class Class {
     private String color;
 
     @ColumnInfo(name = "monday")
-    private Date monday;
+    private Calendar monday;
 
     @ColumnInfo(name = "tuesday")
-    private Date tuesday;
+    private Calendar tuesday;
 
     @ColumnInfo(name = "wednesday")
-    private Date wednesday;
+    private Calendar wednesday;
 
     @ColumnInfo(name = "thursday")
-    private Date thursday;
+    private Calendar thursday;
 
     @ColumnInfo(name = "friday")
-    private Date friday;
+    private Calendar friday;
 
     public String getName() {
         return name;
@@ -47,43 +47,43 @@ public class Class {
         this.color = color;
     }
 
-    public Date getMonday() {
+    public Calendar getMonday() {
         return monday;
     }
 
-    public void setMonday(Date monday) {
+    public void setMonday(Calendar monday) {
         this.monday = monday;
     }
 
-    public Date getTuesday() {
+    public Calendar getTuesday() {
         return tuesday;
     }
 
-    public void setTuesday(Date tuesday) {
+    public void setTuesday(Calendar tuesday) {
         this.tuesday = tuesday;
     }
 
-    public Date getWednesday() {
+    public Calendar getWednesday() {
         return wednesday;
     }
 
-    public void setWednesday(Date wednesday) {
+    public void setWednesday(Calendar wednesday) {
         this.wednesday = wednesday;
     }
 
-    public Date getThursday() {
+    public Calendar getThursday() {
         return thursday;
     }
 
-    public void setThursday(Date thursday) {
+    public void setThursday(Calendar thursday) {
         this.thursday = thursday;
     }
 
-    public Date getFriday() {
+    public Calendar getFriday() {
         return friday;
     }
 
-    public void setFriday(Date friday) {
+    public void setFriday(Calendar friday) {
         this.friday = friday;
     }
 }
