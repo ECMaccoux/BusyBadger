@@ -32,7 +32,7 @@ public class Reminders {
         // TODO: get system to replace notification ID so that they dont overlap
         int id = new Random().nextInt(61) + 100;
         // SETTING EVENT NOTIFY ID
-     //   event.setNotificationID(id);
+        event.setNotificationID(id);
         //
         Intent intent = new Intent(context, AlarmReceiver.class);
         intent.putExtra(AlarmReceiver.NOT_ID,id);
