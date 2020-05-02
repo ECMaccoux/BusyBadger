@@ -32,6 +32,9 @@ public class Event {
     @ColumnInfo(name = "longitude")
     private double longitude;
 
+    @ColumnInfo(name = "notifyID")
+    private int notificationID;
+
     public Event() {
 
     }
@@ -77,5 +80,12 @@ public class Event {
     public void setLocation(LatLng location) {
         this.latitude = location.latitude;
         this.longitude = location.longitude;
+    }
+    public void setNotificationID(int notificationID) {
+        this.notificationID = notificationID;
+    }
+
+    public int getNotificationID() {
+        return notificationID;
     }
 }
