@@ -1,5 +1,6 @@
 package com.maccoux.busybadger.UIMain;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.maccoux.busybadger.AddEvent;
 import com.maccoux.busybadger.R;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Event;
@@ -41,6 +44,15 @@ public class TodayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_today, container, false);
+
+        FloatingActionButton addEventButton = (FloatingActionButton)view.findViewById(R.id.addEventScreenButton);
+        addEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddEvent.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

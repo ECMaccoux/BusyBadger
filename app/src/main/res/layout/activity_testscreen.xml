@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/addEventButton"
+        android:id="@+id/addEventScreenButton"
         android:layout_width="157dp"
         android:layout_height="wrap_content"
         android:onClick="onAddEventButton"
