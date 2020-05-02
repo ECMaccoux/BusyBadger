@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class TodayFragment extends Fragment {
+public class TodayFragment extends Fragment implements CalendarFragment.CalendarDataListener {
 
     View view;
     Date currentDate;
@@ -138,6 +138,18 @@ public class TodayFragment extends Fragment {
             if(fragment != null) {
                 manager.beginTransaction().remove(fragment).commit();
             }
+        }
+    }
+
+    @Override
+    public void onDataReceived(Date selectedDate) {
+        if(selectedDate != null) {
+            currentDate.setTime(selectedDate.getTime());
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            currentDate.setYear(currentDate.getYear() - 1900);
+
+            removeCards();
+            addCards(currentDate);
         }
     }
 

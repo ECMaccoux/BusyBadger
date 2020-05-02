@@ -40,6 +40,7 @@
     </style>
     <style name="CalendarViewHeaderText" parent="TextAppearance.MaterialCalendarWidget.Header">
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
     </style>
     <style name="CalendarViewWeekDayText" parent="TextAppearance.MaterialCalendarWidget.WeekDay">
         <item name="android:textColor">@android:color/white</item>
