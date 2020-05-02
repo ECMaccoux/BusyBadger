@@ -60,6 +60,7 @@ public class HomeView extends AppCompatActivity implements CalendarFragment.Cale
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddEvent.class);
+                intent.putExtra("type", 0);
                 startActivity(intent);
             }
         });

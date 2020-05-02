@@ -1,12 +1,14 @@
 package com.maccoux.busybadger.UIMain;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.maccoux.busybadger.R;
@@ -50,15 +52,19 @@ public class EventCardFragment extends Fragment {
         TextView description = (TextView)view.findViewById(R.id.textDescription);
         description.setText(event.getDescription());
 
-        View cardview = view.findViewById(R.id.cardView);
+        View cardview = view.findViewById(R.id.eventCardView);
         cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ViewEventDebug.class);
-                intent.putExtra("eID",eID);
+                intent.putExtra("eID", eID);
                 startActivity(intent);
             }
         });
+
+        if(event.getEventType() == 1) {
+            cardview.setBackgroundColor(Color.parseColor("#4287f5"));
+        }
 
         return view;
     }

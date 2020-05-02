@@ -112,6 +112,8 @@ public class AddEvent extends AppCompatActivity {
         }
         event.setDate(c.getTime());
 
+        event.setEventType(eventType);
+
         if(eventType == 0) {
             //event
             if(locationPicked) {
