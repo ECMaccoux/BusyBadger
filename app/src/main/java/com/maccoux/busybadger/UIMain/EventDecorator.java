@@ -1,6 +1,7 @@
 package com.maccoux.busybadger.UIMain;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import androidx.core.content.ContextCompat;
