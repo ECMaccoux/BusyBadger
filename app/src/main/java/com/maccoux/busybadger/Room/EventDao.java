@@ -29,6 +29,9 @@ public interface EventDao {
     @Query("SELECT datetime FROM event ORDER BY datetime(datetime)")
     List<Date> getAllDates();
 
+    @Query("SELECT * FROM event WHERE notifyID LIKE :notificationID")
+    Event loadByNotID(int notificationID);
+
     @Insert
     void insert(Event event);
 

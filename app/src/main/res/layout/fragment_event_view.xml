@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:onClick="onRemove">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
@@ -82,6 +83,14 @@
             android:layout_gravity="center"
             android:text="Edit Progress" />
 
+        <Button
+            android:id="@+id/finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|center_vertical"
+            android:onClick="onExit"
+            android:text="Finish" />
+
         <TextView
             android:id="@+id/progress"
             android:layout_width="wrap_content"
@@ -100,6 +109,17 @@
             android:max="100"
             android:progress="50"
             android:visibility="visible" />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:onClick="onRemove"
+            android:text="Delete Event"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </com.google.android.material.card.MaterialCardView>
 

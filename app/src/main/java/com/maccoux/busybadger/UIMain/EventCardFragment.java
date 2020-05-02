@@ -33,6 +33,9 @@ public class EventCardFragment extends Fragment {
         db = AppDatabase.getAppDatabase(getContext());
         Event event = db.eventDao().loadById(eID);
 
+        if(event == null) {
+            return null;
+        }
         TextView title = (TextView)view.findViewById(R.id.textTitle);
         title.setText(event.getName());
 
