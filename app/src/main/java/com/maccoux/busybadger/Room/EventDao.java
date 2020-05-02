@@ -26,6 +26,9 @@ public interface EventDao {
     @Query("SELECT * FROM event WHERE datetime BETWEEN :from AND :to")
     List<Event> getAllDateRange(Date from, Date to);
 
+    @Query("SELECT * FROM event WHERE datetime >= :from")
+    List<Event> getAllFromDate(Date from);
+
     @Query("SELECT datetime FROM event ORDER BY datetime(datetime)")
     List<Date> getAllDates();
 

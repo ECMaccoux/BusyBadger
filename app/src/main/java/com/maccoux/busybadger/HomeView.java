@@ -2,6 +2,8 @@ package com.maccoux.busybadger;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.maccoux.busybadger.UIMain.SectionsPagerAdapter;
 public class HomeView extends AppCompatActivity {
@@ -23,6 +26,15 @@ public class HomeView extends AppCompatActivity {
         viewPager.setCurrentItem(1);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+
+        FloatingActionButton addEventButton = (FloatingActionButton)findViewById(R.id.addEventScreenButton);
+        addEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddEvent.class);
+                startActivity(intent);
+            }
+        });
     }
     /** This is the onCreateOptionsMenu function to inflate the settings menu
      *

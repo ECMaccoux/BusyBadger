@@ -173,17 +173,7 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addEventScreenButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="32dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:rippleColor="@color/colorAccentDark"
-        app:srcCompat="@drawable/ic_add_white_24dp" />
+
 
     <TextView
         android:id="@+id/textDayOff"

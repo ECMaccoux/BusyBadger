@@ -11,6 +11,7 @@
         android:layout_height="126dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="20dp"
         android:theme="@style/Theme.MaterialComponents"
         android:clickable="true"
         app:cardBackgroundColor="@color/colorAccentDark"

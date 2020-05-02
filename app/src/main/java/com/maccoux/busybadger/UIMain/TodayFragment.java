@@ -46,15 +46,6 @@ public class TodayFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_today, container, false);
 
-        FloatingActionButton addEventButton = (FloatingActionButton)view.findViewById(R.id.addEventScreenButton);
-        addEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddEvent.class);
-                startActivity(intent);
-            }
-        });
-
         ImageButton leftArrow = (ImageButton)view.findViewById(R.id.buttonLeftArrow);
         leftArrow.setOnClickListener(new View.OnClickListener() {
             @Override
