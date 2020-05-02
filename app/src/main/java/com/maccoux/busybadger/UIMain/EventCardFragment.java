@@ -46,6 +46,10 @@ public class EventCardFragment extends Fragment {
                 + ", " + c.get(Calendar.YEAR) + ", " + c.get(Calendar.HOUR)
                 + ":" + String.format("%02d", c.get(Calendar.MINUTE)) + " " + c.getDisplayName(Calendar.AM_PM, Calendar.LONG, Locale.getDefault());
         date.setText(newText);
+
+        TextView description = (TextView)view.findViewById(R.id.textDescription);
+        description.setText(event.getDescription());
+
         View cardview = view.findViewById(R.id.cardView);
         cardview.setOnClickListener(new View.OnClickListener() {
             @Override
