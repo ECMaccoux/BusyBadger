@@ -76,18 +76,6 @@ public class AddEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) { addCompleteEvent(v); }
         });
-
-// TODO: FIX CODE FOR POPUP REMINDER DIALOG
-//        repeatButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ReminderFragment repeatPicker = new ReminderFragment();
-//                repeatPicker.show(getSupportFragmentManager(), "repeat picker");
-//
-//            }
-//        });
-
-        //TODO: add code for launching the Google Maps picker for location
     }
 
     public void addCompleteEvent(View view) {
@@ -115,6 +103,7 @@ public class AddEvent extends AppCompatActivity {
         if(locationPicked) {
             event.setLocation(location);
         }
+        event.setEventType(R.integer.Event);
 
         // Notification Functionality
         CheckBox check15 = findViewById(R.id.checkBox15min2);
@@ -223,6 +212,7 @@ public class AddEvent extends AppCompatActivity {
                 }
 
                 locationPicked = true;
+
             }
         }
     }

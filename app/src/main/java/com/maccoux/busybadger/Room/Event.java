@@ -35,6 +35,9 @@ public class Event {
     @ColumnInfo(name = "notifyID")
     private int notificationID;
 
+    @ColumnInfo(name = "eventType")
+    private int eventType;
+
     public Event() {
 
     }
@@ -87,5 +90,11 @@ public class Event {
 
     public int getNotificationID() {
         return notificationID;
+    }
+    public int getEventType() {
+        return eventType;
+    }
+    public void setEventType(int eventType) {
+        this.eventType = eventType;
     }
 }
