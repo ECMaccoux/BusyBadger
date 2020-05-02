@@ -20,61 +20,58 @@
 
     <Button
         android:id="@+id/editEventsButton"
-        android:onClick="onEditEventButton"
         android:layout_width="170dp"
         android:layout_height="55dp"
+        android:onClick="onEditEventButton"
         android:text="Edit Events"
-        android:textColor="#000000"
+        android:textColor="#FFFF"
+        app:elevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsToolbar"
-        app:layout_constraintVertical_bias="0.291" />
+        app:layout_constraintVertical_bias="0.33"
+        style="@style/Widget.MaterialComponents.Button"
+        android:textSize="16dp"
+        android:fontFamily="@font/roboto"/>
 
     <Button
         android:id="@+id/listButton"
-        android:onClick="onEditListButton"
         android:layout_width="170dp"
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
+        android:onClick="onEditListButton"
         android:text="Edit Class List"
-        android:textColor="#000000"
+        android:textColor="#FFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editEventsButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        style="@style/Widget.MaterialComponents.Button"
+        android:textSize="16dp"
+        android:fontFamily="@font/roboto"
+        app:elevation="3dp"/>
 
     <Button
-        android:id="@+id/exportButton"
-        android:onClick="onExportButton"
+        android:id="@+id/resetButton"
         android:layout_width="170dp"
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
-        android:text="Google Calendar Export"
-        android:textColor="#000000"
+        android:onClick="onResetButton"
+        android:text="Reset"
+        android:textColor="#FFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listButton"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/resetButton"
-        android:onClick="onResetButton"
-        android:layout_width="170dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="16dp"
-        android:text="Reset"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exportButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        style="@style/Widget.MaterialComponents.Button"
+        android:textSize="16dp"
+        android:fontFamily="@font/roboto"
+        app:elevation="3dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

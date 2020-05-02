@@ -4,12 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import android.view.View;
 import android.widget.Toast;
 
 public class Settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
         Toolbar toolbar = (Toolbar) findViewById(R.id.settingsToolbar);
@@ -31,9 +35,9 @@ public class Settings extends AppCompatActivity {
     public void onEditListButton(View v) {
         Toast.makeText(this, "Edit class list button clicked!", Toast.LENGTH_SHORT).show();
     }
-    public void onExportButton(View v) {
-        Toast.makeText(this, "Google Calendar export button clicked!", Toast.LENGTH_SHORT).show();
-    }
+//    public void onExportButton(View v) {
+//        Toast.makeText(this, "Google Calendar export button clicked!", Toast.LENGTH_SHORT).show();
+//    }
     public void onResetButton(View v) {
         Toast.makeText(this, "Reset button clicked!", Toast.LENGTH_SHORT).show();
     }
