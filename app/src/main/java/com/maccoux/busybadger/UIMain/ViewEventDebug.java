@@ -3,14 +3,18 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.maccoux.busybadger.AlarmReceiver;
@@ -18,7 +22,10 @@ import com.maccoux.busybadger.R;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Event;
 
+import org.w3c.dom.Text;
+
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 public class ViewEventDebug extends AppCompatActivity {
     View view;
@@ -29,18 +36,47 @@ public class ViewEventDebug extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.fragment_event_view);
+       ViewGroup viewGroup = (ViewGroup) findViewById(R.id.cardView);
+
         db = AppDatabase.getAppDatabase(this);
        Intent intent = getIntent();
         eID = intent.getIntExtra("eID",0);
+        List<Address> addresses;
+        String city = "";
+        String state = "";
+        String country = "";
         if(eID == 0) {
             event = db.eventDao().loadByNotID(intent.getIntExtra("notID",0));
         }
         else {
             event = db.eventDao().loadById(eID);
         }
+        SeekBar progressBar = (SeekBar) findViewById(R.id.seekBar);
+        if(event.getEventType() != 2 || event.getEventType() != 3) {
+            viewGroup.removeView(findViewById(R.id.seekBar));
+            viewGroup.removeView(findViewById(R.id.progress));
+
+        }
         TextView title = (TextView) findViewById(R.id.textTitle);
         title.setText(event.getName());
 
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+           addresses = geocoder.getFromLocation(event.getLatitude(),event.getLongitude(), 1);
+            city = addresses.get(0).getLocality();
+            state = addresses.get(0).getAdminArea();
+            country = addresses.get(0).getCountryName();
+        }
+        catch(Exception e) {
+
+        }
+        TextView loc = (TextView) findViewById(R.id.textDescription2);
+        //
+        loc.setText(city+", "+state+", "+country);
+
+        //
+        TextView desc = (TextView) findViewById(R.id.textDescription);
+        desc.setText(event.getDescription());
         TextView date = (TextView) findViewById(R.id.textDate);
         Calendar c = Calendar.getInstance();
         c.setTime(event.getDate());

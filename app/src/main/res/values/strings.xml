@@ -6,5 +6,8 @@
     <string name="title">Event Name</string>
     <string name="secondaryText">date</string>
     <string name="somethingElse">quick description</string>
+    <integer name="Event">1</integer>
+    <integer name="Class">2</integer>
+    <integer name="Assignment">3</integer>
 </resources>
 
