@@ -88,7 +88,7 @@ public class TodayFragment extends Fragment {
         TextView dateTitle = (TextView)view.findViewById(R.id.textCurrentDate);
         Calendar c = Calendar.getInstance();
         c.setTime(currentDate);
-        String newText = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.DAY_OF_WEEK)+ ", " + c.get(Calendar.YEAR);
+        String newText = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.DAY_OF_MONTH)+ ", " + c.get(Calendar.YEAR);
         dateTitle.setText(newText);
 
         manager = getChildFragmentManager();
