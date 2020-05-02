@@ -12,8 +12,8 @@ public class PlannerFragment extends Fragment {
 
     View view;
 
-    public static TodayFragment newInstance() {
-        TodayFragment fragment = new TodayFragment();
+    public static PlannerFragment newInstance() {
+        PlannerFragment fragment = new PlannerFragment();
         return fragment;
     }
 

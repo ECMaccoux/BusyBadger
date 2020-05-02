@@ -21,10 +21,10 @@ public interface EventDao {
     List<Event> loadAllByIds(int[] eventIDs);
 
     @Query("SELECT * FROM event WHERE date(datetime) = date(:date)")
-    List<Event> getAllOnDate(Calendar date);
+    List<Event> getAllOnDate(Date date);
 
-    @Query("SELECT * FROM event WHERE date(datetime) BETWEEN date(:from) AND date(:to)")
-    List<Event> getAllDateRange(Calendar from, Calendar to);
+    @Query("SELECT * FROM event WHERE datetime BETWEEN :from AND :to")
+    List<Event> getAllDateRange(Date from, Date to);
 
     @Query("SELECT datetime FROM event ORDER BY datetime(datetime)")
     List<Date> getAllDates();

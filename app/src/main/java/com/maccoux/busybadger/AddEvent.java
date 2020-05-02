@@ -125,6 +125,8 @@ public class AddEvent extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Event added!", Toast.LENGTH_SHORT).show();
 
         finish();
+
+
     }
 
     public void onDateButtonClicked(View view) {
