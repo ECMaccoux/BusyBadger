@@ -12,6 +12,9 @@ public class Assignment {
     @PrimaryKey
     public int aID;
 
+    @ColumnInfo(name = "class")
+    private int classID;
+
     @ColumnInfo(name = "name")
     private String name;
 
@@ -51,4 +54,12 @@ public class Assignment {
     public int getProgress() { return progress; }
 
     public void setProgress(int progress) { this.progress = progress; }
+
+    public void setClassID(int id) {
+        this.classID = id;
+    }
+
+    public int getClassID() {
+        return classID;
+    }
 }

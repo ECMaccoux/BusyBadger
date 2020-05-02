@@ -109,6 +109,15 @@ public class TestScreen extends AppCompatActivity {
 
     public void onAddEventButton(View v) {
         Intent intent = new Intent(this, AddEvent.class);
+        String name = "null";
+        intent.putExtra(name, "event");
+        startActivity(intent);
+    }
+
+    public void onAddAssignmentButton(View v) {
+        Intent intent = new Intent(this, AddEvent.class);
+        String name = "null";
+        intent.putExtra(name, "assignment");
         startActivity(intent);
     }
     public void timeSet(Context context, Calendar eventTime,Event event) {

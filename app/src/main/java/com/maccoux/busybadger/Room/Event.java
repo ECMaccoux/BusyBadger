@@ -38,16 +38,20 @@ public class Event {
     @ColumnInfo(name = "eventType")
     private int eventType;
 
+    @ColumnInfo(name = "classID")
+    private int classID;
+
     public Event() {
 
     }
 
-    public Event(String name, String description, Calendar c, LatLng location) {
+    public Event(String name, String description, Calendar c, LatLng location, Class aClass) {
         this.name = name;
         this.description = description;
         this.date = c.getTime();
         this.latitude = location.latitude;
         this.longitude = location.longitude;
+        this.classID = classID;
     }
 
     public String getName() {
@@ -80,6 +84,14 @@ public class Event {
 
     public void setLongitude(double longitude) { this.longitude = longitude; }
 
+    public void setClassID(int id) {
+        this.classID = id;
+    }
+
+    public int getClassID() {
+        return classID;
+    }
+
     public void setLocation(LatLng location) {
         this.latitude = location.latitude;
         this.longitude = location.longitude;
@@ -95,6 +107,7 @@ public class Event {
         return eventType;
     }
     public void setEventType(int eventType) {
+        //0 = event, 1 = assignment
         this.eventType = eventType;
     }
 }

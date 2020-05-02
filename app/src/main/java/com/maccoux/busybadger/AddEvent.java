@@ -1,13 +1,11 @@
 package com.maccoux.busybadger;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -20,17 +18,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.room.Room;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Event;
+import com.maccoux.busybadger.Room.Class;
+import com.maccoux.busybadger.UIMain.ClassListFragment;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -41,9 +38,11 @@ public class AddEvent extends AppCompatActivity {
 
     final Calendar c = Calendar.getInstance();
     int eID;
+    int eventType;
     String name;
     String description;
     LatLng location;
+    int classID;
 
     boolean datePicked;
     boolean locationPicked;
@@ -54,7 +53,21 @@ public class AddEvent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event);
+        String type = "null";
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle.getString("strName")!= null) {
+            type = bundle.getString("name");
+        }
+
+        if (type == "event") {
+            setContentView(R.layout.activity_add_event);
+            eventType = 0;
+        } else {
+            setContentView(R.layout.activity_add_assignment);
+            eventType = 1;
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); // get the reference of Toolbar
         setSupportActionBar(toolbar); // Setting/replace toolbar as the ActionBar
 
@@ -94,16 +107,24 @@ public class AddEvent extends AppCompatActivity {
         description = descriptionText.getText().toString();
         event.setDescription(description);
 
+
         if(!datePicked) {
             Toast.makeText(getApplicationContext(), "Please select a date/time for this event", Toast.LENGTH_SHORT).show();
             return;
         }
         event.setDate(c.getTime());
 
-        if(locationPicked) {
-            event.setLocation(location);
+        if(eventType == 0) {
+            if(locationPicked) {
+                event.setLocation(location);
+            }
         }
-        event.setEventType(R.integer.Event);
+
+        if(eventType == 1) {
+            event.setClassID(classID);
+        }
+
+        //event.setEventType(1);
 
         // Notification Functionality
         CheckBox check15 = findViewById(R.id.checkBox15min2);
@@ -166,6 +187,13 @@ public class AddEvent extends AppCompatActivity {
         startActivityForResult(intent, 1);
     }
 
+    public void onAddClassButton(View v) {
+
+        Intent intent = new Intent(this, ClassListFragment.class);
+        startActivityForResult(intent, 2);
+        //Intent intent = new Intent(this, )
+    }
+
     // This AsyncTask class inserts new events into the Room database in a background thread
     private static class InsertEventAsyncTask extends AsyncTask<Void, Void, Integer> {
         private WeakReference<Activity> weakActivity;
@@ -213,6 +241,10 @@ public class AddEvent extends AppCompatActivity {
 
                 locationPicked = true;
 
+            }
+        } else if (requestCode == 2) {
+            if (resultCode == RESULT_OK) {
+                classID = data.getIntExtra("name", 1);
             }
         }
     }
