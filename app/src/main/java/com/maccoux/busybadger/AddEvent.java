@@ -189,7 +189,7 @@ public class AddEvent extends AppCompatActivity {
 
     public void onAddClassButton(View v) {
 
-        Intent intent = new Intent(this, ClassListFragment.class);
+        Intent intent = new Intent(this, PickClass.class);
         startActivityForResult(intent, 2);
         //Intent intent = new Intent(this, )
     }

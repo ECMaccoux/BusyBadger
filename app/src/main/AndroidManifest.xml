@@ -54,6 +54,12 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".PickClass"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBqa3ukVkF7N4yrq8Z0V3XF3DSXk4_7FtU" />
