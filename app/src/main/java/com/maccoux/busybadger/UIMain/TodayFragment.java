@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -54,20 +55,51 @@ public class TodayFragment extends Fragment {
             }
         });
 
+        ImageButton leftArrow = (ImageButton)view.findViewById(R.id.buttonLeftArrow);
+        leftArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                leftButtonClicked();
+            }
+        });
+
+        ImageButton rightArrow = (ImageButton)view.findViewById(R.id.buttonRightArrow);
+        rightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rightButtonClicked();
+            }
+        });
+
         return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         db = AppDatabase.getAppDatabase(getContext());
-
         currentDate = new Date();
 
+        addCards(currentDate);
+    }
+
+    public void leftButtonClicked() {
+        currentDate.setDate(currentDate.getDate() - 1);
+        removeCards();
+        addCards(currentDate);
+    }
+
+    public void rightButtonClicked() {
+        currentDate.setDate(currentDate.getDate() + 1);
+        removeCards();
+        addCards(currentDate);
+    }
+
+    public void addCards(Date date) {
         Date from = new Date();
         Date to = new Date();
 
-        from.setTime(currentDate.getTime());
-        to.setTime(currentDate.getTime());
+        from.setTime(date.getTime());
+        to.setTime(date.getTime());
         from.setHours(0);
         from.setMinutes(0);
         from.setSeconds(0);
@@ -87,7 +119,7 @@ public class TodayFragment extends Fragment {
 
         TextView dateTitle = (TextView)view.findViewById(R.id.textCurrentDate);
         Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
+        c.setTime(date);
         String newText = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.DAY_OF_MONTH)+ ", " + c.get(Calendar.YEAR);
         dateTitle.setText(newText);
 
@@ -108,6 +140,14 @@ public class TodayFragment extends Fragment {
         }
 
         ft.commit();
+    }
+
+    public void removeCards() {
+        for(Fragment fragment : manager.getFragments()) {
+            if(fragment != null) {
+                manager.beginTransaction().remove(fragment).commit();
+            }
+        }
     }
 
 }

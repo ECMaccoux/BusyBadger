@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,10 +27,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Event;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 //public class AddEvent extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -124,7 +129,7 @@ public class AddEvent extends AppCompatActivity {
 
     private void setDateTimeText() {
         TextView dateTimeText = (TextView)findViewById(R.id.setDateText);
-        String newText = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.DAY_OF_WEEK)
+        String newText = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.DAY_OF_MONTH)
                 + ", " + c.get(Calendar.YEAR) + "\n" + c.get(Calendar.HOUR)
                 + ":" + String.format("%02d", c.get(Calendar.MINUTE)) + " " + c.getDisplayName(Calendar.AM_PM, Calendar.LONG, Locale.getDefault());
 
@@ -184,6 +189,28 @@ public class AddEvent extends AppCompatActivity {
         if(requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 location = new LatLng(data.getDoubleExtra("latitude", 0), data.getDoubleExtra("longitude", 0));
+
+                TextView view = (TextView)findViewById(R.id.setLocationText);
+                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+
+                List<Address> addresses = new ArrayList<>();
+                try {
+                    addresses = geocoder.getFromLocation(location.latitude, location.longitude,1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                android.location.Address address = addresses.get(0);
+
+                if (address != null) {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(address.getAddressLine(0));
+                    for (int i = 1; i <= address.getMaxAddressLineIndex(); i++){
+                        sb.append("\n" + address.getAddressLine(i));
+                    }
+                    view.setText(sb.toString());
+                }
+
                 locationPicked = true;
 
             }
