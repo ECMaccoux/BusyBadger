@@ -240,9 +240,13 @@ public class AddEvent extends AppCompatActivity {
 
             }
         } else if (requestCode == 2) {
-            //if (resultCode == RESULT_OK) {
-                classID = data.getIntExtra("cID", 1);
-            //}
+            try {
+                if (resultCode == RESULT_OK) {
+                    classID = data.getIntExtra("cid", 0);
+                }
+            } catch (NullPointerException e) {
+
+            }
         }
     }
 
