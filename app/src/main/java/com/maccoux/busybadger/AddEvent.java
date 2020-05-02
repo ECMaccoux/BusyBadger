@@ -53,16 +53,14 @@ public class AddEvent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String type = "null";
         Bundle bundle = getIntent().getExtras();
 
-        if(bundle.getString("strName")!= null) {
-            type = bundle.getString("name");
+        if(bundle.getInt("type") != -1) {
+            eventType = bundle.getInt("type");
         }
 
-        if (type == "event") {
+        if (eventType == 0) {
             setContentView(R.layout.activity_add_event);
-            eventType = 0;
         } else {
             setContentView(R.layout.activity_add_assignment);
             eventType = 1;
@@ -115,11 +113,12 @@ public class AddEvent extends AppCompatActivity {
         event.setDate(c.getTime());
 
         if(eventType == 0) {
+            //event
             if(locationPicked) {
                 event.setLocation(location);
             }
         }
-
+        //assignment
         if(eventType == 1) {
             event.setClassID(classID);
         }
@@ -188,10 +187,8 @@ public class AddEvent extends AppCompatActivity {
     }
 
     public void onAddClassButton(View v) {
-
         Intent intent = new Intent(this, PickClass.class);
         startActivityForResult(intent, 2);
-        //Intent intent = new Intent(this, )
     }
 
     // This AsyncTask class inserts new events into the Room database in a background thread
@@ -243,9 +240,9 @@ public class AddEvent extends AppCompatActivity {
 
             }
         } else if (requestCode == 2) {
-            if (resultCode == RESULT_OK) {
-                classID = data.getIntExtra("name", 1);
-            }
+            //if (resultCode == RESULT_OK) {
+                classID = data.getIntExtra("cID", 1);
+            //}
         }
     }
 

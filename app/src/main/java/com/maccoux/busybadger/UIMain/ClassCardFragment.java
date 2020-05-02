@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.maccoux.busybadger.AddEvent;
 import com.maccoux.busybadger.R;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Class;
@@ -16,6 +17,8 @@ import com.maccoux.busybadger.Room.Event;
 
 import java.util.Calendar;
 import java.util.Locale;
+
+import static android.app.Activity.RESULT_OK;
 
 public class ClassCardFragment extends Fragment {
 
@@ -55,9 +58,12 @@ public class ClassCardFragment extends Fragment {
         cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ViewEventDebug.class);
+                Intent intent = new Intent(getContext(), AddEvent.class);
                 intent.putExtra("cID",cID);
+                getActivity().setResult(RESULT_OK, intent);
+                getActivity().finish();
                 startActivity(intent);
+
             }
         });
 
