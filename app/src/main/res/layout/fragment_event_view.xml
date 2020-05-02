@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
-        android:layout_width="338dp"
-        android:layout_height="126dp"
+        android:layout_width="361dp"
+        android:layout_height="481dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
-        android:theme="@style/Theme.MaterialComponents"
+        android:layout_marginBottom="50dp"
         android:clickable="true"
-        app:cardBackgroundColor="@color/colorAccentDark"
+        android:theme="@style/Theme.MaterialComponents"
+        app:cardBackgroundColor="@color/design_default_color_primary"
         app:cardElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +54,52 @@
             android:text="@string/somethingElse"
             android:textAllCaps="false"
             android:textAppearance="?attr/textAppearanceBody2" />
+
+        <TextView
+            android:id="@+id/textDescription2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:fontFamily="@font/roboto"
+            android:paddingLeft="16dp"
+            android:text="NotificationID"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <Button
+            android:id="@+id/removeNotify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginTop="50dp"
+            android:onClick="onCancel"
+            android:text="Silence Notifications" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Edit Progress" />
+
+        <TextView
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="140dp"
+            android:text="Progress" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+            android:layout_width="321dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="160dp"
+            android:max="100"
+            android:progress="50"
+            android:visibility="visible" />
 
     </com.google.android.material.card.MaterialCardView>
 

@@ -29,6 +29,11 @@
             tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".Settings"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:configChanges="orientation"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity" ></activity>
+        <activity android:name="com.maccoux.busybadger.UIMain.ViewEventDebug"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation"
             android:screenOrientation="portrait"

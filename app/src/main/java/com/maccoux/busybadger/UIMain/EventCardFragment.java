@@ -26,7 +26,6 @@ public class EventCardFragment extends Fragment {
         EventCardFragment fragment = new EventCardFragment();
         return fragment;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view =  inflater.inflate(R.layout.fragment_event_card, container, false);
@@ -44,15 +43,17 @@ public class EventCardFragment extends Fragment {
                 + ", " + c.get(Calendar.YEAR) + ", " + c.get(Calendar.HOUR)
                 + ":" + String.format("%02d", c.get(Calendar.MINUTE)) + " " + c.getDisplayName(Calendar.AM_PM, Calendar.LONG, Locale.getDefault());
         date.setText(newText);
-
-        view.setOnClickListener(new View.OnClickListener() {
+        View cardview = view.findViewById(R.id.cardView);
+        cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ViewEventDebugFragment.class);
+                Intent intent = new Intent(getContext(), ViewEventDebug.class);
+                intent.putExtra("eID",eID);
                 startActivity(intent);
             }
         });
 
         return view;
     }
+
 }
