@@ -23,4 +23,7 @@ public interface ClassDao {
 
     @Delete
     void delete(Class c);
+
+    @Query("DELETE FROM class")
+    void deleteAll();
 }

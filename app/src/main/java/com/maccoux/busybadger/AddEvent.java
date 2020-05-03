@@ -22,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.maccoux.busybadger.Room.AppDatabase;
+import com.maccoux.busybadger.Room.Class;
 import com.maccoux.busybadger.Room.Event;
 
 import java.io.IOException;
@@ -276,6 +277,15 @@ public class AddEvent extends AppCompatActivity {
             try {
                 if (resultCode == RESULT_OK) {
                     classID = data.getIntExtra("cid", 0);
+
+                    TextView view = (TextView)findViewById(R.id.setLocationText);
+                    Class cl = db.classDao().loadById(classID);
+
+                    if(cl != null) {
+                        view.setText(cl.getName());
+                    } else {
+                        view.setText("Class has been deleted");
+                    }
                 }
             } catch (NullPointerException e) {
 
