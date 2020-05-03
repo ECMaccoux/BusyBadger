@@ -33,7 +33,7 @@ public class ClassCardFragment extends Fragment {
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view =  inflater.inflate(R.layout.fragment_event_card, container, false);
+        view =  inflater.inflate(R.layout.fragment_class_card, container, false);
         cID = getArguments().getInt("cid");
         db = AppDatabase.getAppDatabase(getContext());
         Class currClass = db.classDao().loadById(cID);
@@ -60,12 +60,10 @@ public class ClassCardFragment extends Fragment {
         cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddEvent.class);
-                intent.putExtra("cID",cID);
+                Intent intent = new Intent();
+                intent.putExtra("cid",cID);
                 getActivity().setResult(RESULT_OK, intent);
                 getActivity().finish();
-                startActivity(intent);
-
             }
         });
 
