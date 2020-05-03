@@ -16,7 +16,7 @@
         android:layout_marginBottom="50dp"
         android:clickable="true"
         android:theme="@style/Theme.MaterialComponents"
-        app:cardBackgroundColor="@color/design_default_color_primary"
+        app:cardBackgroundColor="@color/colorAccentDark"
         app:cardElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
