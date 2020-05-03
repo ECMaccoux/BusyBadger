@@ -51,6 +51,8 @@ public class TodayFragment extends Fragment implements CalendarFragment.Calendar
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_today, container, false);
 
+        manager = getChildFragmentManager();
+
         ImageButton leftArrow = (ImageButton)view.findViewById(R.id.buttonLeftArrow);
         leftArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +77,7 @@ public class TodayFragment extends Fragment implements CalendarFragment.Calendar
         db = AppDatabase.getAppDatabase(getContext());
         currentDate = new Date();
 
+        removeCards();
         addCards(currentDate);
     }
 
@@ -258,7 +261,6 @@ public class TodayFragment extends Fragment implements CalendarFragment.Calendar
             }
         }
 
-        manager = getChildFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
 
         /*for (Event event : events) {
@@ -277,7 +279,7 @@ public class TodayFragment extends Fragment implements CalendarFragment.Calendar
         for(Object item : combinedList) {
             if(item.getClass() == Event.class) {
                 Event event = (Event)item;
-                EventCardFragment tempFrag = (EventCardFragment)manager.findFragmentByTag(Integer.toString(event.eID));
+                EventCardFragment tempFrag = (EventCardFragment)manager.findFragmentByTag("event" + Integer.toString(event.eID));
                 if(tempFrag != null) {
                     continue;
                 }
@@ -286,11 +288,11 @@ public class TodayFragment extends Fragment implements CalendarFragment.Calendar
                 Bundle bundle = new Bundle();
                 bundle.putInt("eid", event.eID);
                 fragment.setArguments(bundle);
-                ft.add(R.id.eventScrollLayout, fragment, Integer.toString(event.eID));
+                ft.add(R.id.eventScrollLayout, fragment, "event" + Integer.toString(event.eID));
             }
             else if(item.getClass() == Class.class) {
                 Class cl = (Class)item;
-                ClassCardTodayFragment tempFrag = (ClassCardTodayFragment)manager.findFragmentByTag(Integer.toString(cl.cID));
+                ClassCardTodayFragment tempFrag = (ClassCardTodayFragment)manager.findFragmentByTag("class" + Integer.toString(cl.cID));
                 if(tempFrag != null) {
                     continue;
                 }
@@ -300,7 +302,7 @@ public class TodayFragment extends Fragment implements CalendarFragment.Calendar
                 bundle.putInt("cid", cl.cID);
                 bundle.putLong("curDate", date.getTime());
                 fragment.setArguments(bundle);
-                ft.add(R.id.eventScrollLayout, fragment, Integer.toString(cl.cID));
+                ft.add(R.id.eventScrollLayout, fragment, "class" + Integer.toString(cl.cID));
             }
         }
 

@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.maccoux.busybadger.Setup.Setup1_Welcome;
 import com.maccoux.busybadger.UIMain.CalendarFragment;
 import com.maccoux.busybadger.UIMain.SectionsPagerAdapter;
+import com.maccoux.busybadger.UIMain.TodayFragment;
 
 import java.util.Date;
 
