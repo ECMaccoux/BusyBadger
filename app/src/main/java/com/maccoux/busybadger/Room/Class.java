@@ -35,6 +35,10 @@ public class Class {
     @ColumnInfo(name = "begin")
     private Date begin;
 
+    @ColumnInfo(name = "notifyID")
+    private int notificationID;
+
+
     public String getName() {
         return name;
     }
@@ -94,4 +98,10 @@ public class Class {
     public Date getBegin() { return begin; }
 
     public void setBegin(Date begin) { this.begin = begin; }
+    public void setNotificationID(int notificationID) {
+        this.notificationID = notificationID;
+    }
+    public int getNotificationID() {
+        return notificationID;
+    }
 }

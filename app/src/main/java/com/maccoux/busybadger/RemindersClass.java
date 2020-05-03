@@ -85,7 +85,8 @@ public class RemindersClass {
      * @param interval time in milliseconds between events that you would like to notify for.
      */
     public void setAlarmRepeat(int interval) {
-        Notification notification = buildNotification("Event Reminder",(event.getName()+" set for interval of "+interval),context).build();
+        String notString = event.getName()+" "+EventDate.get(Calendar.HOUR)+","+EventDate.get(Calendar.MINUTE);
+        Notification notification = buildNotification("Event Reminder",notString,context).build();
         alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         // TODO: get system to replace notification ID so that they dont overlap
         int id = new Random().nextInt(61) + 100;

@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {Event.class, Assignment.class, Class.class}, version = 6)
+@Database(entities = {Event.class, Assignment.class, Class.class}, version = 7)
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract EventDao eventDao();

@@ -17,9 +17,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Class;
-import com.maccoux.busybadger.Room.Event;
 
 import java.lang.ref.WeakReference;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AddClass extends AppCompatActivity {
@@ -283,6 +283,12 @@ public class AddClass extends AppCompatActivity {
 
         new InsertClassAsyncTask(this, c).execute();
 
+        boolean[] checkOptions = new boolean[]{false,true,false,false};
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(c.getBegin());
+        RemindersClass reminder = new RemindersClass(cal, checkOptions,c, this);
+        reminder.setAlarmRepeat(604800000); // one week
+        //reminder.setAlarm();
         Toast.makeText(getApplicationContext(), "Class added!", Toast.LENGTH_SHORT).show();
 
         finish();
