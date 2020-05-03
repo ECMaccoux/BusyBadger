@@ -58,7 +58,7 @@ public class CalendarFragment extends Fragment {
             }
         });
 
-        EventDecorator eventDecorator = new EventDecorator(Color.WHITE, db.eventDao().getAllDates());
+        EventDecorator eventDecorator = new EventDecorator(Color.WHITE, db.eventDao().getAllDates(), db.classDao().getAll());
         calendarView.addDecorator(eventDecorator);
 
         return view;

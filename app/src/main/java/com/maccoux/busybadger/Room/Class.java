@@ -32,6 +32,9 @@ public class Class {
     @ColumnInfo(name = "friday")
     private Date friday;
 
+    @ColumnInfo(name = "begin")
+    private Date begin;
+
     public String getName() {
         return name;
     }
@@ -87,4 +90,8 @@ public class Class {
     public void setFriday(Date friday) {
         this.friday = friday;
     }
+
+    public Date getBegin() { return begin; }
+
+    public void setBegin(Date begin) { this.begin = begin; }
 }

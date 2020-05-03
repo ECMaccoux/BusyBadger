@@ -246,17 +246,23 @@ public class AddClass extends AppCompatActivity {
             c.setMonday(mon);
         }
         if(tuesSet) {
-            c.setMonday(tues);
+            c.setTuesday(tues);
         }
         if(wedSet) {
-            c.setMonday(wed);
+            c.setWednesday(wed);
         }
         if(thursSet) {
-            c.setMonday(thurs);
+            c.setThursday(thurs);
         }
         if(friSet) {
-            c.setMonday(fri);
+            c.setFriday(fri);
         }
+
+        Date begin = new Date();
+        begin.setHours(0);
+        begin.setMinutes(0);
+        begin.setSeconds(0);
+        c.setBegin(begin);
 
         EditText editColorCode = (EditText)findViewById(R.id.editColorCode);
         String colorCode;
