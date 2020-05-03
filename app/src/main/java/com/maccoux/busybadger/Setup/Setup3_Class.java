@@ -96,6 +96,7 @@ public class Setup3_Class extends AppCompatActivity {
         for(Fragment fragment : manager.getFragments()) {
             if(fragment != null) {
                 manager.beginTransaction().remove(fragment).commit();
+                manager.popBackStackImmediate();
             }
         }
     }

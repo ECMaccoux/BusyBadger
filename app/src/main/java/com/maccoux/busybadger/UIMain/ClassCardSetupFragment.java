@@ -1,5 +1,6 @@
 package com.maccoux.busybadger.UIMain;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -47,9 +48,9 @@ public class ClassCardSetupFragment extends Fragment {
             public void onClick(View v) {
                 db.classDao().delete(currClass);
                 Toast.makeText(getContext(), "Class deleted", Toast.LENGTH_SHORT).show();
-                //getActivity().recreate();
-                ((Setup3_Class)getActivity()).removeCards();
-                ((Setup3_Class)getActivity()).addCards();
+                Setup3_Class activity = (Setup3_Class)getActivity();
+                activity.removeCards();
+                activity.addCards();
             }
         });
 
