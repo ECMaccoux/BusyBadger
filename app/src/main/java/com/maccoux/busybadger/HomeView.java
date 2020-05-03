@@ -1,6 +1,8 @@
 package com.maccoux.busybadger;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +23,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.maccoux.busybadger.Setup.Setup1_Welcome;
 import com.maccoux.busybadger.UIMain.CalendarFragment;
 import com.maccoux.busybadger.UIMain.SectionsPagerAdapter;
 
@@ -35,8 +40,15 @@ public class HomeView extends AppCompatActivity implements CalendarFragment.Cale
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences prefs = this.getSharedPreferences("com.maccoux.busybadger", Context.MODE_PRIVATE);
+        if(!prefs.getBoolean("firstRun", false)) {
+            Intent intent = new Intent(getApplicationContext(), Setup1_Welcome.class);
+            startActivity(intent);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homeview_main);
+
         sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
@@ -62,16 +74,6 @@ public class HomeView extends AppCompatActivity implements CalendarFragment.Cale
 
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-
-        /*FloatingActionButton addEventButton = (FloatingActionButton)findViewById(R.id.addEventScreenButton);
-        addEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddEvent.class);
-                intent.putExtra("type", 0);
-                startActivity(intent);
-            }
-        });*/
 
         fab_main = (FloatingActionButton)findViewById(R.id.addEventScreenButton);
         fab1_assignment = (FloatingActionButton)findViewById(R.id.fabAddAssignment);
