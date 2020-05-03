@@ -129,10 +129,11 @@ public class ViewEventDebug extends AppCompatActivity {
      *
      * @param v View passed in by OnClick
      */
-    public void onRemove(View v) {
+    public void onRemoveEvent(View v) {
         onCancel(v);
 
         db.eventDao().delete(event);
         finish();
     }
+
 }

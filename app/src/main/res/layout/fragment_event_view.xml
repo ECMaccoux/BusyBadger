@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:onClick="onRemove">
+    android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/classCardView"
@@ -83,10 +82,10 @@
             android:layout_width="361dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center|center_vertical"
-            android:onClick="onExit"
+            android:backgroundTint="@color/colorPrimaryDark"
             android:fontFamily="@font/roboto"
-            android:text="Back"
-            android:backgroundTint="@color/colorPrimaryDark"/>
+            android:onClick="onExit"
+            android:text="Back" />
 
         <Button
             android:id="@+id/editevent"
@@ -112,12 +111,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="100dp"
-            android:onClick="onRemove"
+            android:backgroundTint="@color/colorPrimaryDark"
             android:fontFamily="@font/roboto"
+            android:onClick="onRemoveEvent"
             android:text="Delete"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="@color/colorPrimaryDark"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <SeekBar
             android:id="@+id/seekBar"
