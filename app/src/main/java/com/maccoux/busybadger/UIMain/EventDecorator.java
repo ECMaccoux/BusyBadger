@@ -72,7 +72,7 @@ public class EventDecorator implements DayViewDecorator {
 
         for(Class c : classes) {
             if(c.getBegin().compareTo(date) > 0) {
-                return false;
+                continue;
             }
 
             if(c.getMonday() != null && date.getDay() == 1) {

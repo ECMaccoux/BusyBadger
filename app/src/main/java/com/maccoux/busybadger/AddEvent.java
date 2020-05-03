@@ -108,6 +108,7 @@ public class AddEvent extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please select a date/time for this event", Toast.LENGTH_SHORT).show();
             return;
         }
+        c.set(Calendar.MONTH, c.get(Calendar.MONTH) + 1);
         event.setDate(c.getTime());
 
         event.setEventType(eventType);
