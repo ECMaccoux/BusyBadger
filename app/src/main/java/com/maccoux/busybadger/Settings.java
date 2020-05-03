@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.maccoux.busybadger.Setup.Setup3_Class;
+
 public class Settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,35 +32,9 @@ public class Settings extends AppCompatActivity {
         });
     }
 
-    public void onEditEventButton(View v) {
-        String[] multiChoiceItems = getResources().getStringArray(R.array.eventListArray);
-        final boolean[] checkedItems = {false, false};
-        new AlertDialog.Builder(this, R.style.MyDialogTheme)
-                .setTitle(R.string.EditEventList)
-                .setMultiChoiceItems(multiChoiceItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int index, boolean isChecked) {
-                        Log.d("MainActivity", "clicked item index is " + index);
-                    }
-                })
-                .setPositiveButton("Ok", null)
-                .setNegativeButton("Cancel", null)
-                .show();
-    }
     public void onEditListButton(View v) {
-        String[] multiChoiceItems = getResources().getStringArray(R.array.classListArray);
-        final boolean[] checkedItems = {false, false};
-        new AlertDialog.Builder(this, R.style.MyDialogTheme)
-                .setTitle(R.string.EditClassList)
-                .setMultiChoiceItems(multiChoiceItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int index, boolean isChecked) {
-                        Log.d("MainActivity", "clicked item index is " + index);
-                    }
-                })
-                .setPositiveButton("Ok", null)
-                .setNegativeButton("Cancel", null)
-                .show();
+        Intent intent = new Intent(getApplicationContext(), Setup3_Class.class);
+        startActivity(intent);
     }
 
     public void onResetButton(View v) {

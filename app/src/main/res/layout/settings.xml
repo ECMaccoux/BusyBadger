@@ -20,31 +20,10 @@
         app:title="Settings" />
 
     <Button
-        android:id="@+id/editEventsButton"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="140dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto"
-        android:onClick="onEditEventButton"
-        android:text="Edit Events"
-        android:textAlignment="center"
-        android:textColor="#FFFF"
-        android:textSize="16dp"
-        app:elevation="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsToolbar"
-        app:layout_constraintVertical_bias="0.319" />
-
-    <Button
         android:id="@+id/listButton"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="140dp"
         android:layout_height="60dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto"
         android:onClick="onEditListButton"
         android:text="Edit Class List"
@@ -56,8 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEventsButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/resetButton"

@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:fontFamily="@font/roboto"
-            android:paddingLeft="16dp"
+            android:paddingLeft="8dp"
             android:text="@string/secondaryText"
             android:textAllCaps="false"
             android:textAppearance="?attr/textAppearanceBody2" />
@@ -51,7 +51,7 @@
             android:layout_height="54dp"
             android:layout_marginTop="70dp"
             android:fontFamily="@font/roboto"
-            android:paddingLeft="16dp"
+            android:paddingLeft="8dp"
             android:text="@string/somethingElse"
             android:textAllCaps="false"
             android:textAppearance="?attr/textAppearanceBody2" />
@@ -62,35 +62,41 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:fontFamily="@font/roboto"
-            android:paddingLeft="16dp"
+            android:paddingLeft="8dp"
             android:text="NotificationID"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <Button
             android:id="@+id/removeNotify"
-            android:layout_width="wrap_content"
+            android:layout_width="361dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:layout_marginTop="50dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:fontFamily="@font/roboto"
             android:onClick="onCancel"
             android:text="Silence Notifications" />
 
         <Button
             android:id="@+id/finish"
-            android:layout_width="wrap_content"
+            android:layout_width="361dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center|center_vertical"
             android:onClick="onExit"
-            android:text="Finish" />
+            android:fontFamily="@font/roboto"
+            android:text="Back"
+            android:backgroundTint="@color/colorPrimaryDark"/>
 
         <Button
             android:id="@+id/editevent"
-            android:layout_width="wrap_content"
+            android:layout_width="361dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:fontFamily="@font/roboto"
             android:onClick="onEdit"
-            android:text="Edit Event" />
+            android:text="Edit" />
 
         <TextView
             android:id="@+id/progress"
@@ -102,14 +108,16 @@
 
         <Button
             android:id="@+id/delete"
-            android:layout_width="wrap_content"
+            android:layout_width="361dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="100dp"
             android:onClick="onRemove"
-            android:text="Delete Event"
+            android:fontFamily="@font/roboto"
+            android:text="Delete"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/colorPrimaryDark"/>
 
         <SeekBar
             android:id="@+id/seekBar"
