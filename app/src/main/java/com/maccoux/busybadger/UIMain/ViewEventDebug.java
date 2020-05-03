@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class ViewEventDebug extends AppCompatActivity {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.fragment_event_view);
        ViewGroup viewGroup = (ViewGroup) findViewById(R.id.eventCardView);
+        View cardView = (View) findViewById(R.id.eventCardView);
 
         db = AppDatabase.getAppDatabase(this);
        Intent intent = getIntent();
@@ -58,7 +60,10 @@ public class ViewEventDebug extends AppCompatActivity {
             }
         }
         SeekBar progressBar = (SeekBar) findViewById(R.id.seekBar);
-        if(event.getEventType() != 2 || event.getEventType() != 3) {
+        if(event.getEventType() == 1) {
+            cardView.setBackgroundColor(Color.parseColor("#4287f5"));
+        }
+        if(event.getEventType() != 1) {
             viewGroup.removeView(findViewById(R.id.seekBar));
             viewGroup.removeView(findViewById(R.id.progress));
 

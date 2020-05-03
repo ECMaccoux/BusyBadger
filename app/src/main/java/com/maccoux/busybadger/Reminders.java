@@ -60,7 +60,7 @@ public class Reminders {
                         case 0: // 15min
                             EventDate.setTimeInMillis(EventDate.getTimeInMillis()-15*60*1000);
                             alarmMgr.set(AlarmManager.RTC_WAKEUP,EventDate.getTimeInMillis(), alarmIntent);
-                            Toast.makeText(context, ("Reminder time for 15 mins ="+EventDate.getTime()), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, ("Reminder time for 15 mins ="+EventDate.getTime()), Toast.LENGTH_SHORT).show();
 
                             break;
                         case 1: // 1 hour
@@ -77,13 +77,6 @@ public class Reminders {
         else {
             alarmMgr.set(AlarmManager.RTC_WAKEUP,EventDate.getTimeInMillis(),alarmIntent);
         }
-        // Set the alarm to start at 3:00 p.m.
-        //calendar.set(Calendar.HOUR_OF_DAY, 17);
-        //calendar.set(Calendar.MINUTE, 13);
-        //calendar.set(Calendar.MONTH,4);
-
-        // setRepeating() lets you specify a precise custom interval--in this case,
-        // 20 minutes.
 
     }
 
@@ -92,7 +85,7 @@ public class Reminders {
      * @param interval time in milliseconds between events that you would like to notify for.
      */
     public void setAlarmRepeat(int interval) {
-        Notification notification = buildNotification("Event Reminder",(event.getName()+" set for "+EventDate.getTime()),context).build();
+        Notification notification = buildNotification("Event Reminder",(event.getName()+" set for interval of "+interval),context).build();
         alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         // TODO: get system to replace notification ID so that they dont overlap
         int id = new Random().nextInt(61) + 100;
