@@ -63,7 +63,7 @@ public class ViewEventDebug extends AppCompatActivity {
         if(event.getEventType() == 1) {
             cardView.setBackgroundColor(Color.parseColor("#4287f5"));
         }
-        if(event.getEventType() != 2 || event.getEventType() != 3) {
+        if(event.getEventType() != 1) {
             viewGroup.removeView(findViewById(R.id.seekBar));
             viewGroup.removeView(findViewById(R.id.progress));
 

@@ -121,7 +121,7 @@ public class TestScreen extends AppCompatActivity {
     public void timeSet(Context context, Calendar eventTime,Event event) {
         Toast.makeText(context, ("Time SET!"+eventTime.getTime()), Toast.LENGTH_SHORT).show();
         Reminders reminder = new Reminders(eventTime,null,event,context);
-        reminder.setAlarm();
+        reminder.setAlarmRepeat(1000*60);
     }
 
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener  {
