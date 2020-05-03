@@ -29,7 +29,7 @@ public class Reminders {
         this.context = context;
     }
     public void setAlarm() {
-        NotificationCompat.Builder builder = buildNotification("Event Reminder",(event.getName()+" set for "+EventDate.getTime()),context);
+        NotificationCompat.Builder builder = buildNotification("Event Reminder", "You have an event coming up!",context);
 
         alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         // TODO: get system to replace notification ID so that they dont overlap
