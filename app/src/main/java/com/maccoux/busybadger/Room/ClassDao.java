@@ -1,6 +1,7 @@
 package com.maccoux.busybadger.Room;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Query;
 
 import java.util.List;
@@ -15,4 +16,7 @@ public interface ClassDao {
 
     @Query("SELECT * FROM class WHERE cid IN (:classIDs)")
     List<Class> loadAllByIds(int[] classIDs);
+
+    @Delete
+    void delete(Class c);
 }

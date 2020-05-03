@@ -54,7 +54,7 @@ public class ClassCardFragment extends Fragment {
         TextView description = (TextView)view.findViewById(R.id.textDescription);
         description.setText(event.getDescription());
         */
-        View cardview = view.findViewById(R.id.eventCardView);
+        View cardview = view.findViewById(R.id.classCardView);
         cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

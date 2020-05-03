@@ -39,9 +39,9 @@ public class ViewEventDebug extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.fragment_event_view);
-       ViewGroup viewGroup = (ViewGroup) findViewById(R.id.eventCardView);
-        View cardView = (View) findViewById(R.id.eventCardView);
+        setContentView(R.layout.fragment_event_view);
+        ViewGroup viewGroup = (ViewGroup) findViewById(R.id.classCardView);
+        View cardView = (View) findViewById(R.id.classCardView);
 
         db = AppDatabase.getAppDatabase(this);
        Intent intent = getIntent();
