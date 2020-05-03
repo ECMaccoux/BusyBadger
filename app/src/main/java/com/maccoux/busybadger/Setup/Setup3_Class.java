@@ -1,7 +1,9 @@
 package com.maccoux.busybadger.Setup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +35,15 @@ public class Setup3_Class extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { finish(); }
+        });
+
+        Button continueButton = (Button)findViewById(R.id.buttonContinue);
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Setup4_Finish.class);
+                startActivity(intent);
+            }
         });
 
         db = AppDatabase.getAppDatabase(this);
