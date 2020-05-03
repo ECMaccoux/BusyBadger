@@ -57,7 +57,8 @@ public class Setup2_Name extends AppCompatActivity {
                 prefs.edit().putString("firstName", editFirstName.getText().toString()).commit();
                 prefs.edit().putString("lastName", editLastName.getText().toString()).commit();
 
-                Intent intent = new Intent(getApplicationContext(), Setup3_Class.class);
+                //Intent intent = new Intent(getApplicationContext(), Setup3_Class.class);
+                Intent intent = new Intent(getApplicationContext(), Setup4_Finish.class);
                 startActivity(intent);
             }
         });

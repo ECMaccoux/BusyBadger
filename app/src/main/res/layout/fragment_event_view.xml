@@ -7,7 +7,7 @@
     android:onClick="onRemove">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/eventCardView"
+        android:id="@+id/classCardView"
         android:layout_width="361dp"
         android:layout_height="481dp"
         android:layout_marginStart="32dp"

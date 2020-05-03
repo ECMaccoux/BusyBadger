@@ -7,22 +7,21 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/classCardView"
-        android:layout_width="291dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
         android:clickable="true"
-        android:layout_marginBottom="20dp"
         android:theme="@style/Theme.MaterialComponents"
         app:cardBackgroundColor="@color/colorAccentDark"
         app:cardElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.219"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textTitle"
-            android:layout_width="match_parent"
+            android:layout_width="175dp"
             android:layout_height="match_parent"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
@@ -32,5 +31,17 @@
             android:textAppearance="?attr/textAppearanceHeadline6" />
 
     </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toEndOf="@+id/classCardView"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
