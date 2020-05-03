@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.maccoux.busybadger.R;
 import com.maccoux.busybadger.Room.AppDatabase;
+import com.maccoux.busybadger.Room.Class;
 import com.maccoux.busybadger.Room.Event;
 
 import java.util.Calendar;
@@ -64,6 +65,15 @@ public class EventCardFragment extends Fragment {
 
         if(event.getEventType() == 1) {
             cardview.setBackgroundColor(Color.parseColor("#4287f5"));
+
+            TextView textClass = (TextView)view.findViewById(R.id.textClass);
+            if(event.getClassID() > 0) {
+                Class cl = db.classDao().loadById(event.getClassID());
+                if(cl != null) {
+                    textClass.setText(cl.getName());
+                    textClass.setAlpha(1.0f);
+                }
+            }
         }
 
         return view;

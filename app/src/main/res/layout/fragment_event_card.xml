@@ -46,11 +46,23 @@
         <TextView
             android:id="@+id/textDescription"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:fontFamily="@font/roboto"
             android:paddingLeft="16dp"
             android:text="@string/somethingElse"
+            android:textAllCaps="false"
+            android:textAppearance="?attr/textAppearanceBody2" />
+
+        <TextView
+            android:id="@+id/textClass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:alpha="0"
+            android:fontFamily="@font/roboto"
+            android:paddingLeft="16dp"
+            android:text="class"
             android:textAllCaps="false"
             android:textAppearance="?attr/textAppearanceBody2" />
 
