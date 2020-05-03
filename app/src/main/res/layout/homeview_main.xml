@@ -16,14 +16,85 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabSelectedTextColor="@android:color/holo_red_dark"
-            app:tabTextColor="@android:color/white"/>
+            app:tabTextColor="@android:color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </androidx.viewpager.widget.ViewPager>
+
+    <TextView
+        android:id="@+id/textview_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="186dp"
+        android:layout_marginEnd="96dp"
+        android:layout_gravity="bottom|right"
+        android:background="#212121"
+        android:padding="8dp"
+        android:text="Add Event"
+        android:textColor="#ffffff"
+        android:visibility="invisible" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="176dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_gravity="bottom|right"
+        android:clickable="true"
+        android:elevation="16dp"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:backgroundTint="#ffffff"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="@color/colorAccentDark"
+        app:srcCompat="@drawable/ic_add_white_24dp" />
+
+
+    <TextView
+        android:id="@+id/textview_assignment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="116dp"
+        android:background="#212121"
+        android:layout_gravity="bottom|right"
+        android:padding="8dp"
+        android:text="Add Assignment"
+        android:textColor="#ffffff"
+        android:visibility="invisible" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddAssignment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="106dp"
+        android:layout_gravity="bottom|right"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="16dp"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorAccent"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="@color/colorAccentDark"
+        app:srcCompat="@drawable/ic_add_white_24dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addEventScreenButton"
@@ -32,8 +103,11 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="32dp"
         android:clickable="true"
+        android:elevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:pressedTranslationZ="12dp"
         app:rippleColor="@color/colorAccentDark"
         app:srcCompat="@drawable/ic_add_white_24dp" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

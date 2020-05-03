@@ -15,6 +15,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import com.maccoux.busybadger.UIMain.CalendarFragment;
 import com.maccoux.busybadger.UIMain.SectionsPagerAdapter;
@@ -24,6 +27,11 @@ import java.util.Date;
 public class HomeView extends AppCompatActivity implements CalendarFragment.CalendarDataListener {
 
     SectionsPagerAdapter sectionsPagerAdapter;
+
+    FloatingActionButton fab_main, fab1_assignment, fab2_event;
+    Animation fab_open, fab_close, fab_clock, fab_anticlock;
+    TextView textview_assignment, textview_event;
+    boolean isOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +63,65 @@ public class HomeView extends AppCompatActivity implements CalendarFragment.Cale
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
-        FloatingActionButton addEventButton = (FloatingActionButton)findViewById(R.id.addEventScreenButton);
+        /*FloatingActionButton addEventButton = (FloatingActionButton)findViewById(R.id.addEventScreenButton);
         addEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddEvent.class);
+                intent.putExtra("type", 0);
+                startActivity(intent);
+            }
+        });*/
+
+        fab_main = (FloatingActionButton)findViewById(R.id.addEventScreenButton);
+        fab1_assignment = (FloatingActionButton)findViewById(R.id.fabAddAssignment);
+        fab2_event = (FloatingActionButton)findViewById(R.id.fabAddEvent);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_clock = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_clock);
+        fab_anticlock = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_anticlock);
+
+        textview_assignment = (TextView)findViewById(R.id.textview_assignment);
+        textview_event = (TextView)findViewById(R.id.textview_event);
+
+
+        fab_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isOpen) {
+                    textview_assignment.setVisibility(View.INVISIBLE);
+                    textview_event.setVisibility(View.INVISIBLE);
+                    fab2_event.startAnimation(fab_close);
+                    fab1_assignment.startAnimation(fab_close);
+                    fab_main.startAnimation(fab_anticlock);
+                    fab2_event.setClickable(false);
+                    fab1_assignment.setClickable(false);
+                    isOpen = false;
+                } else {
+                    textview_assignment.setVisibility(View.VISIBLE);
+                    textview_event.setVisibility(View.VISIBLE);
+                    fab2_event.startAnimation(fab_open);
+                    fab1_assignment.startAnimation(fab_open);
+                    fab_main.startAnimation(fab_clock);
+                    fab2_event.setClickable(true);
+                    fab1_assignment.setClickable(true);
+                    isOpen = true;
+                }
+            }
+        });
+
+        fab1_assignment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AddEvent.class);
+                intent.putExtra("type", 1);
+                startActivity(intent);
+            }
+        });
+
+        fab2_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddEvent.class);
                 intent.putExtra("type", 0);
                 startActivity(intent);
