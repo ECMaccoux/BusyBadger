@@ -37,6 +37,7 @@ public class Setup4_Finish extends AppCompatActivity {
                 editor.commit();
 
                 Intent intent = new Intent(getApplicationContext(), HomeView.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });

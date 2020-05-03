@@ -25,9 +25,7 @@ public class Settings extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(Settings.this, HomeView.class);
-                myIntent.putExtra("settings", ""); //Optional parameters
-                Settings.this.startActivity(myIntent);
+                finish();
             }
         });
     }

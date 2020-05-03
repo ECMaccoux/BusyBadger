@@ -8,9 +8,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.maccoux.busybadger.AddClass;
 import com.maccoux.busybadger.R;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Class;
@@ -42,6 +44,15 @@ public class Setup3_Class extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Setup4_Finish.class);
+                startActivity(intent);
+            }
+        });
+
+        Button addClassButton = (Button)findViewById(R.id.buttonAddClass);
+        addClassButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddClass.class);
                 startActivity(intent);
             }
         });
@@ -79,6 +90,20 @@ public class Setup3_Class extends AppCompatActivity {
         }
 
         ft.commit();
+    }
+
+    public void removeCards() {
+        for(Fragment fragment : manager.getFragments()) {
+            if(fragment != null) {
+                manager.beginTransaction().remove(fragment).commit();
+            }
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        recreate();
     }
 
 }

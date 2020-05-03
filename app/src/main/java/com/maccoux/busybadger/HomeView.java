@@ -147,10 +147,10 @@ public class HomeView extends AppCompatActivity implements CalendarFragment.Cale
         Intent intent;
 
         switch(item.getItemId()) {
-            case R.id.TestButton:
+            /*case R.id.TestButton:
                 intent = new Intent(this, TestScreen.class);
                 startActivity(intent);
-                return true;
+                return true;*/
             case R.id.SettingsButton:
                 intent = new Intent(this, Settings.class);
                 startActivity(intent);

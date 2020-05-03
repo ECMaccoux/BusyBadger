@@ -3,11 +3,12 @@ package com.maccoux.busybadger.Room;
 import androidx.room.*;
 
 import java.util.Calendar;
+import java.util.Date;
 
 @Entity(tableName = "class")
 public class Class {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int cID;
 
     @ColumnInfo(name = "name")
@@ -17,19 +18,19 @@ public class Class {
     private String color;
 
     @ColumnInfo(name = "monday")
-    private Calendar monday;
+    private Date monday;
 
     @ColumnInfo(name = "tuesday")
-    private Calendar tuesday;
+    private Date tuesday;
 
     @ColumnInfo(name = "wednesday")
-    private Calendar wednesday;
+    private Date wednesday;
 
     @ColumnInfo(name = "thursday")
-    private Calendar thursday;
+    private Date thursday;
 
     @ColumnInfo(name = "friday")
-    private Calendar friday;
+    private Date friday;
 
     public String getName() {
         return name;
@@ -47,43 +48,43 @@ public class Class {
         this.color = color;
     }
 
-    public Calendar getMonday() {
+    public Date getMonday() {
         return monday;
     }
 
-    public void setMonday(Calendar monday) {
+    public void setMonday(Date monday) {
         this.monday = monday;
     }
 
-    public Calendar getTuesday() {
+    public Date getTuesday() {
         return tuesday;
     }
 
-    public void setTuesday(Calendar tuesday) {
+    public void setTuesday(Date tuesday) {
         this.tuesday = tuesday;
     }
 
-    public Calendar getWednesday() {
+    public Date getWednesday() {
         return wednesday;
     }
 
-    public void setWednesday(Calendar wednesday) {
+    public void setWednesday(Date wednesday) {
         this.wednesday = wednesday;
     }
 
-    public Calendar getThursday() {
+    public Date getThursday() {
         return thursday;
     }
 
-    public void setThursday(Calendar thursday) {
+    public void setThursday(Date thursday) {
         this.thursday = thursday;
     }
 
-    public Calendar getFriday() {
+    public Date getFriday() {
         return friday;
     }
 
-    public void setFriday(Calendar friday) {
+    public void setFriday(Date friday) {
         this.friday = friday;
     }
 }

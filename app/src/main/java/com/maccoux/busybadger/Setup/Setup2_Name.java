@@ -46,11 +46,11 @@ public class Setup2_Name extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(editFirstName.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Please enter a first name", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "Please enter a first name", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(editLastName.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Please enter a last name", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "Please enter a last name", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
