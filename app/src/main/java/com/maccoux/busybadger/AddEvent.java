@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -88,58 +89,89 @@ public class AddEvent extends AppCompatActivity {
     }
 
     public void addCompleteEvent(View view) {
+        //Repeat options
+        CheckBox checkDaily = findViewById(R.id.checkBoxDaily);
+        CheckBox checkWeekly = findViewById(R.id.checkBoxWeekly);
+        CheckBox checkMonthly = findViewById(R.id.checkBoxMonthly);
+        
+        boolean [] checkRepeats = {checkDaily.isChecked(), checkWeekly.isChecked(), checkMonthly.isChecked()};
 
-        Event event = new Event();
+        if (checkRepeats[0] == true) { //daily
 
-        EditText nameText = (EditText) findViewById(R.id.eventNameText);
-        name = nameText.getText().toString();
-        if(name.equals("")) {
-            Toast.makeText(getApplicationContext(), "Please enter a name for this event", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        event.setName(name);
-
-        EditText descriptionText = (EditText) findViewById(R.id.eventDescriptionText);
-        description = descriptionText.getText().toString();
-        event.setDescription(description);
-
-
-        if(!datePicked) {
-            Toast.makeText(getApplicationContext(), "Please select a date/time for this event", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        c.set(Calendar.MONTH, c.get(Calendar.MONTH) + 1);
-        event.setDate(c.getTime());
-
-        event.setEventType(eventType);
-
-        if(eventType == 0) {
-            //event
-            if(locationPicked) {
-                event.setLocation(location);
+            for (int i = 0; i <= 365; i++) {
+                Add(c.getTime());
+                c.set(Calendar.DAY_OF_MONTH, c.get(Calendar.DAY_OF_MONTH) + 1);
             }
+
+        } else if (checkRepeats[1] == true) { //weekly
+
+            for (int i = 0; i <= 52; i++) {
+                Add(c.getTime());
+                c.set(Calendar.DAY_OF_MONTH, c.get(Calendar.DAY_OF_MONTH) + 7);
+            }
+
+        } else if (checkRepeats[2] == true) { //monthly
+
+            for (int i = 0; i <= 12; i++) {
+                Add(c.getTime());
+                c.set(Calendar.MONTH, c.get(Calendar.MONTH) + 1);
+            }
+
+        } else { //no repeats
+
+            Add(c.getTime());
+
+            /*
+            Event event = new Event();
+
+            EditText nameText = (EditText) findViewById(R.id.eventNameText);
+            name = nameText.getText().toString();
+            if (name.equals("")) {
+                Toast.makeText(getApplicationContext(), "Please enter a name for this event", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            event.setName(name);
+
+            EditText descriptionText = (EditText) findViewById(R.id.eventDescriptionText);
+            description = descriptionText.getText().toString();
+            event.setDescription(description);
+
+
+            if (!datePicked) {
+                Toast.makeText(getApplicationContext(), "Please select a date/time for this event", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            event.setDate(c.getTime());
+            event.setEventType(eventType);
+
+            if (eventType == 0) {
+                //event
+                if (locationPicked) {
+                    event.setLocation(location);
+                }
+            }
+            //assignment
+            if (eventType == 1) {
+                event.setClassID(classID);
+            }
+
+            //event.setEventType(1);
+
+            // Notification Functionality
+            CheckBox check15 = findViewById(R.id.checkBox15min2);
+            CheckBox check1hour = findViewById(R.id.checkBox1hour2);
+            CheckBox check1day = findViewById(R.id.checkBox1day2);
+            CheckBox check1week = findViewById(R.id.checkBox1week2);
+            checkOptions = new boolean[]{check15.isChecked(), check1hour.isChecked(), check1day.isChecked(), check1week.isChecked()};
+            Reminders reminder = new Reminders(c, checkOptions, event, this);
+            reminder.setAlarm();
+
+            new InsertEventAsyncTask(this, event).execute();
+
+            Toast.makeText(getApplicationContext(), "Event added!", Toast.LENGTH_SHORT).show();
+
+            finish();*/
         }
-        //assignment
-        if(eventType == 1) {
-            event.setClassID(classID);
-        }
-
-        //event.setEventType(1);
-
-        // Notification Functionality
-        CheckBox check15 = findViewById(R.id.checkBox15min2);
-        CheckBox check1hour = findViewById(R.id.checkBox1hour2);
-        CheckBox check1day = findViewById(R.id.checkBox1day2);
-        CheckBox check1week = findViewById(R.id.checkBox1week2);
-        checkOptions = new boolean[]{check15.isChecked(), check1hour.isChecked(), check1day.isChecked(), check1week.isChecked()};
-        Reminders reminder = new Reminders(c,checkOptions,event,this);
-        reminder.setAlarm();
-
-        new InsertEventAsyncTask(this, event).execute();
-
-        Toast.makeText(getApplicationContext(), "Event added!", Toast.LENGTH_SHORT).show();
-
-        finish();
 
 
     }
@@ -248,6 +280,63 @@ public class AddEvent extends AppCompatActivity {
             } catch (NullPointerException e) {
 
             }
+        }
+    }
+
+    public void Add(Date specDate) {
+        { //no repeats
+
+            Event event = new Event();
+
+            EditText nameText = (EditText) findViewById(R.id.eventNameText);
+            name = nameText.getText().toString();
+            if (name.equals("")) {
+                Toast.makeText(getApplicationContext(), "Please enter a name for this event", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            event.setName(name);
+
+            EditText descriptionText = (EditText) findViewById(R.id.eventDescriptionText);
+            description = descriptionText.getText().toString();
+            event.setDescription(description);
+
+
+            if (!datePicked) {
+                Toast.makeText(getApplicationContext(), "Please select a date/time for this event", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            //event.setDate(c.getTime());
+            event.setDate(specDate);
+
+            event.setEventType(eventType);
+
+            if (eventType == 0) {
+                //event
+                if (locationPicked) {
+                    event.setLocation(location);
+                }
+            }
+            //assignment
+            if (eventType == 1) {
+                event.setClassID(classID);
+            }
+
+            //event.setEventType(1);
+
+            // Notification Functionality
+            CheckBox check15 = findViewById(R.id.checkBox15min2);
+            CheckBox check1hour = findViewById(R.id.checkBox1hour2);
+            CheckBox check1day = findViewById(R.id.checkBox1day2);
+            CheckBox check1week = findViewById(R.id.checkBox1week2);
+            checkOptions = new boolean[]{check15.isChecked(), check1hour.isChecked(), check1day.isChecked(), check1week.isChecked()};
+            Reminders reminder = new Reminders(c, checkOptions, event, this);
+            reminder.setAlarm();
+
+            new InsertEventAsyncTask(this, event).execute();
+
+            Toast.makeText(getApplicationContext(), "Event added!", Toast.LENGTH_SHORT).show();
+
+            finish();
         }
     }
 
