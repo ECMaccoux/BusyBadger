@@ -127,7 +127,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="70dp"
             android:max="100"
-            android:progress="50" />
+            android:progress="0" />
 
     </com.google.android.material.card.MaterialCardView>
 

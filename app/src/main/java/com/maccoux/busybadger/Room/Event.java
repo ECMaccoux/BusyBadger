@@ -41,6 +41,9 @@ public class Event {
     @ColumnInfo(name = "classID")
     private int classID;
 
+    @ColumnInfo(name = "progress")
+    private int progress;
+
     public Event() {
 
     }
@@ -110,4 +113,7 @@ public class Event {
         //0 = event, 1 = assignment
         this.eventType = eventType;
     }
+
+    public int getProgress() { return progress; }
+    public void setProgress(int progress) { this.progress = progress; }
 }

@@ -294,7 +294,7 @@ public class AddEvent extends AppCompatActivity {
     }
 
     public void Add(Date specDate) {
-        { //no repeats
+        //no repeats
 
             Event event = new Event();
 
@@ -329,6 +329,7 @@ public class AddEvent extends AppCompatActivity {
             //assignment
             if (eventType == 1) {
                 event.setClassID(classID);
+                event.setProgress(0);
             }
 
             //event.setEventType(1);
@@ -347,7 +348,6 @@ public class AddEvent extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Event added!", Toast.LENGTH_SHORT).show();
 
             finish();
-        }
     }
 
 }

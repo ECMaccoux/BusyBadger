@@ -1,4 +1,5 @@
 package com.maccoux.busybadger.UIMain;
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +30,7 @@ import com.maccoux.busybadger.Room.Event;
 
 import org.w3c.dom.Text;
 
+import java.lang.ref.WeakReference;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -60,8 +63,11 @@ public class ViewEventDebug extends AppCompatActivity {
             }
         }
         SeekBar progressBar = (SeekBar) findViewById(R.id.seekBar);
+
         if(event.getEventType() == 1) {
             cardView.setBackgroundColor(Color.parseColor("#4287f5"));
+            viewGroup.removeView(findViewById(R.id.textDescription2));
+            progressBar.setProgress(event.getProgress());
         }
         if(event.getEventType() != 1) {
             viewGroup.removeView(findViewById(R.id.seekBar));
@@ -81,9 +87,12 @@ public class ViewEventDebug extends AppCompatActivity {
         catch(Exception e) {
 
         }
-        TextView loc = (TextView) findViewById(R.id.textDescription2);
-        //
-        loc.setText(city+", "+state+", "+country);
+
+        if(event.getEventType() != 1) {
+            TextView loc = (TextView) findViewById(R.id.textDescription2);
+            //
+            loc.setText(city+", "+state+", "+country);
+        }
 
         //
         TextView desc = (TextView) findViewById(R.id.textDescription);
@@ -118,6 +127,12 @@ public class ViewEventDebug extends AppCompatActivity {
      * @param v
      */
     public void onExit(View v) {
+        SeekBar progressBar = (SeekBar) findViewById(R.id.seekBar);
+        if(event.getEventType() == 1 && progressBar.getProgress() != event.getProgress()) {
+            event.setProgress(progressBar.getProgress());
+            new UpdateEventAsyncTask(this, event).execute();
+        }
+
         finish();
     }
     public void onEdit(View v)  {
@@ -134,5 +149,22 @@ public class ViewEventDebug extends AppCompatActivity {
 
         db.eventDao().delete(event);
         finish();
+    }
+
+    private static class UpdateEventAsyncTask extends AsyncTask<Void, Void, Integer> {
+        private WeakReference<Activity> weakActivity;
+        private Event event;
+
+        public UpdateEventAsyncTask(Activity activity, Event event) {
+            weakActivity = new WeakReference<>(activity);
+            this.event = event;
+        }
+
+        @Override
+        protected Integer doInBackground(Void... params) {
+            //android.os.Debug.waitForDebugger();
+            db.eventDao().update(event);
+            return 0;
+        }
     }
 }
