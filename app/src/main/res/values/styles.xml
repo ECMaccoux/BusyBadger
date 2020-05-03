@@ -11,6 +11,7 @@
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:itemBackground">@color/colorBG</item>
         <item name="android:timePickerStyle">@style/TimePicker</item>
+        <item name="android:fontFamily">@font/roboto</item>
     </style>
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
@@ -40,7 +41,6 @@
     </style>
     <style name="CalendarViewHeaderText" parent="TextAppearance.MaterialCalendarWidget.Header">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">20sp</item>
     </style>
     <style name="CalendarViewWeekDayText" parent="TextAppearance.MaterialCalendarWidget.WeekDay">
         <item name="android:textColor">@android:color/white</item>
@@ -48,7 +48,10 @@
     <style name="CalendarViewDateText" parent="TextAppearance.MaterialCalendarWidget.Date">
         <item name="android:textColor">@color/mcv_text_date_dark</item>
     </style>
-
-
+    <style name="MyDialogTheme" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:textColor">@color/quantum_white_text</item>
+        <item name="colorAccent">#FF4081</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+    </style>
 
 </resources>

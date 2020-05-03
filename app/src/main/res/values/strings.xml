@@ -9,5 +9,7 @@
     <integer name="Event">1</integer>
     <integer name="Class">2</integer>
     <integer name="Assignment">3</integer>
+    <string name="EditClassList">Edit Class List</string>
+    <string name="EditEventList">Edit Event List</string>
 </resources>
 

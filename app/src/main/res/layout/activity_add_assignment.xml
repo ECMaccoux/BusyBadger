@@ -7,67 +7,70 @@
 
     <CheckBox
         android:id="@+id/checkBox15min2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="15 minutes before"
-        android:textSize="12sp"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="16dp"
         android:buttonTint="#FFFFFF"
         android:drawableTint="#FFFFFF"
+        android:text="15 minutes before"
         android:textColor="#FFFFFF"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464" />
+        app:layout_constraintVertical_bias="0.578" />
 
     <CheckBox
         android:id="@+id/checkBox1hour2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1 hour before"
-        android:textSize="12sp"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
         android:buttonTint="#FFFFFF"
         android:drawableTint="#FFFFFF"
+        android:text="1 hour before"
         android:textColor="#FFFFFF"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.715"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464" />
+        app:layout_constraintVertical_bias="0.611" />
 
     <CheckBox
         android:id="@+id/checkBox1day2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1 day before"
-        android:textSize="12sp"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
         android:buttonTint="#FFFFFF"
         android:drawableTint="#FFFFFF"
+        android:text="1 day before"
         android:textColor="#FFFFFF"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.64" />
 
     <CheckBox
         android:id="@+id/checkBox1week2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1 week before"
-        android:textSize="12sp"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
         android:buttonTint="#FFFFFF"
         android:drawableTint="#FFFFFF"
+        android:text="1 week before"
         android:textColor="#FFFFFF"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.724"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546" />
+        app:layout_constraintVertical_bias="0.672" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -82,34 +85,6 @@
         app:navigationIcon="@drawable/abc_vector_test"
         app:title="Add An Assignment" />
 
-    <EditText
-        android:id="@+id/eventNameText"
-        android:layout_width="310dp"
-        android:layout_height="42dp"
-        android:ems="10"
-        android:hint="Name of assignment"
-        android:inputType="textPersonName"
-        android:textColorHint="#B0B0B0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.135" />
-
-    <EditText
-        android:id="@+id/eventDescriptionText"
-        android:layout_width="309dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:hint="Description"
-        android:inputType="textPersonName"
-        android:textColorHint="#ABABAB"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.231" />
-
     <!--<Button
         android:id="@+id/timeButton"
         android:layout_width="140dp"
@@ -123,20 +98,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.425" />-->
-
-    <Button
-        android:id="@+id/dateTimeButton"
-        android:layout_width="110dp"
-        android:layout_height="49dp"
-        android:onClick="onDateButtonClicked"
-        android:text="Set Date"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
 
     <!--<TextView
         android:id="@+id/textViewLocationDescription"
@@ -214,6 +175,51 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.773" /> -->
 
+    <EditText
+        android:id="@+id/eventNameText"
+        android:layout_width="329dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Name of Assignment"
+        android:inputType="textPersonName"
+        android:textColorHint="#B0B0B0"
+        android:gravity="center|left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.629"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.134" />
+
+    <EditText
+        android:id="@+id/eventDescriptionText"
+        android:layout_width="329dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName"
+        android:textColorHint="#ABABAB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.215" />
+
+    <Button
+        android:id="@+id/dateTimeButton"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:onClick="onDateButtonClicked"
+        android:text="Set Date"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.886"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.334" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -221,16 +227,15 @@
         android:text="Reminders"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412" />
+        app:layout_constraintVertical_bias="0.55" />
 
     <TextView
         android:id="@+id/setDateText"
         android:layout_width="176dp"
-        android:layout_height="46dp"
-        android:gravity="center"
+        android:layout_height="50dp"
+        android:gravity="center|left"
         android:text="No date/time set"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -242,15 +247,15 @@
     <TextView
         android:id="@+id/setLocationText"
         android:layout_width="176dp"
-        android:layout_height="46dp"
-        android:gravity="center"
-        android:text="No class set"
+        android:layout_height="50dp"
+        android:gravity="center|left"
+        android:text="No location set"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
+        app:layout_constraintVertical_bias="0.436" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addEventButton"
@@ -266,16 +271,16 @@
 
     <Button
         android:id="@+id/addLocationButton"
-        android:layout_width="131dp"
+        android:layout_width="130dp"
         android:layout_height="50dp"
-        android:onClick="onAddClassButton"
-        android:text="Set Class"
+        android:onClick="onAddLocationButton"
+        android:text="Set Location"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintHorizontal_bias="0.892"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
+        app:layout_constraintVertical_bias="0.436" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

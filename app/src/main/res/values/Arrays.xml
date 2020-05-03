@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="classListArray">
+        <item>Class 1</item>
+        <item>Class 2</item>
+    </string-array>
+    <string-array name="eventListArray">
+        <item>Event 1</item>
+        <item>Event 2</item>
+    </string-array>
+</resources>
