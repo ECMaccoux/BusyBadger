@@ -23,8 +23,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Event;
-import com.maccoux.busybadger.Room.Class;
-import com.maccoux.busybadger.UIMain.ClassListFragment;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;

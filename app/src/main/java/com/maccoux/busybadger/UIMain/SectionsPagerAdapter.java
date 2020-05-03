@@ -44,7 +44,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter implements Calend
             return CalendarFragment.newInstance();
         }
 
-        return PlaceholderFragment.newInstance(position + 1);
+        return null;
     }
 
     @Nullable
