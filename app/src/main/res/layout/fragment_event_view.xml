@@ -84,6 +84,14 @@
             android:onClick="onExit"
             android:text="Finish" />
 
+        <Button
+            android:id="@+id/editevent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="onEdit"
+            android:text="Edit Event" />
+
         <TextView
             android:id="@+id/progress"
             android:layout_width="wrap_content"
