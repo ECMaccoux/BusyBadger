@@ -1,5 +1,6 @@
 package com.maccoux.busybadger.UIMain;
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -15,9 +16,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.maccoux.busybadger.AlarmReceiver;
+import com.maccoux.busybadger.EditEvent;
 import com.maccoux.busybadger.R;
 import com.maccoux.busybadger.Room.AppDatabase;
 import com.maccoux.busybadger.Room.Event;
@@ -50,6 +53,9 @@ public class ViewEventDebug extends AppCompatActivity {
         }
         else {
             event = db.eventDao().loadById(eID);
+            if(event == null) {
+                onCancel(view);
+            }
         }
         SeekBar progressBar = (SeekBar) findViewById(R.id.seekBar);
         if(event.getEventType() != 2 || event.getEventType() != 3) {
@@ -92,11 +98,13 @@ public class ViewEventDebug extends AppCompatActivity {
      * @param v
      */
     public void onCancel(View v) {
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         int id = event.getNotificationID();
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
         PendingIntent alarmIntent = PendingIntent.getBroadcast(getApplicationContext(), id, intent, 0);
         alarmManager.cancel(alarmIntent);
+        notificationManager.cancel(id);
         Toast.makeText(this,"Notification Silenced!", Toast.LENGTH_SHORT).show();
     }
 
@@ -107,13 +115,18 @@ public class ViewEventDebug extends AppCompatActivity {
     public void onExit(View v) {
         finish();
     }
-
+    public void onEdit(View v)  {
+        Intent intent = new Intent(v.getContext(), EditEvent.class);
+        intent.putExtra("eID", eID);
+        startActivity(intent);
+    }
     /** This function removes event from database and returns back to homebiew
      *
      * @param v View passed in by OnClick
      */
     public void onRemove(View v) {
         onCancel(v);
+
         db.eventDao().delete(event);
         finish();
     }
