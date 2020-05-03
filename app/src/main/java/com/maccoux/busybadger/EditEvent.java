@@ -63,6 +63,7 @@ public class EditEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         List<Address> addresses;
         String city = "";
         String state = "";
