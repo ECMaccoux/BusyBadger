@@ -12,8 +12,6 @@ import java.util.Date;
 @Entity(tableName = "event")
 public class Event {
 
-    // TODO: Add repeat options, progress bar, location functionality
-
     @PrimaryKey(autoGenerate = true)
     public int eID;
 
