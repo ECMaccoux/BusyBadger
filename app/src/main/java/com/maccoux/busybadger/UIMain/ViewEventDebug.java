@@ -65,12 +65,12 @@ public class ViewEventDebug extends AppCompatActivity {
         SeekBar progressBar = (SeekBar) findViewById(R.id.seekBar);
         if(event.getEventType() == 1) {
             cardView.setBackgroundColor(Color.parseColor("#4287f5"));
+            progressBar.setProgress(event.getProgress());
         }
         if(event.getEventType() != 1) {
             viewGroup.removeView(findViewById(R.id.seekBar));
             viewGroup.removeView(findViewById(R.id.progress));
             viewGroup.removeView(findViewById(R.id.textDescription2));
-            progressBar.setProgress(event.getProgress());
         }
         TextView title = (TextView) findViewById(R.id.textTitle);
         title.setText(event.getName());
