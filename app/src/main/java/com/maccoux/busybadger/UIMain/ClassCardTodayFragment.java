@@ -73,8 +73,12 @@ public class ClassCardTodayFragment extends Fragment {
         TextView date = (TextView)view.findViewById(R.id.textDate);
         Calendar c = Calendar.getInstance();
         c.setTime(classDate);
+        int hour = c.get(Calendar.HOUR);
+        if(hour == 0) {
+            hour = 12;
+        }
         String newText = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.DAY_OF_MONTH)
-                + ", " + c.get(Calendar.YEAR) + ", " + c.get(Calendar.HOUR)
+                + ", " + c.get(Calendar.YEAR) + ", " + hour
                 + ":" + String.format("%02d", c.get(Calendar.MINUTE)) + " " + c.getDisplayName(Calendar.AM_PM, Calendar.LONG, Locale.getDefault());
         date.setText(newText);
 

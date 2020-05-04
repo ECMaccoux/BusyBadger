@@ -24,13 +24,13 @@ public interface EventDao {
     @Query("SELECT * FROM event WHERE date(datetime) = date(:date)")
     List<Event> getAllOnDate(Date date);
 
-    @Query("SELECT * FROM event WHERE datetime BETWEEN :from AND :to")
+    @Query("SELECT * FROM event WHERE datetime BETWEEN :from AND :to ORDER BY datetime ASC")
     List<Event> getAllDateRange(Date from, Date to);
 
     @Query("SELECT * FROM event WHERE datetime >= :from ORDER BY datetime ASC")
     List<Event> getAllFromDate(Date from);
 
-    @Query("SELECT datetime FROM event ORDER BY datetime(datetime)")
+    @Query("SELECT datetime FROM event ORDER BY datetime ASC")
     List<Date> getAllDates();
 
     @Query("SELECT * FROM event WHERE notifyID LIKE :notificationID")

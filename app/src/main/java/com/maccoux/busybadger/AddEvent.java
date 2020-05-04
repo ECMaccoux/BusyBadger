@@ -183,8 +183,12 @@ public class AddEvent extends AppCompatActivity {
 
     private void setDateTimeText() {
         TextView dateTimeText = (TextView)findViewById(R.id.setDateText);
+        int hour = c.get(Calendar.HOUR);
+        if(hour == 0) {
+            hour = 12;
+        }
         String newText = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.DAY_OF_MONTH)
-                + ", " + c.get(Calendar.YEAR) + "\n" + c.get(Calendar.HOUR)
+                + ", " + c.get(Calendar.YEAR) + "\n" + hour
                 + ":" + String.format("%02d", c.get(Calendar.MINUTE)) + " " + c.getDisplayName(Calendar.AM_PM, Calendar.LONG, Locale.getDefault());
 
         dateTimeText.setText(newText);
