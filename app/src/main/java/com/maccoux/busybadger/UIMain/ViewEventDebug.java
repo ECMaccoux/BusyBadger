@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+import androidx.room.Index;
 
 import com.maccoux.busybadger.AlarmReceiver;
 import com.maccoux.busybadger.EditEvent;
@@ -30,7 +31,9 @@ import com.maccoux.busybadger.Room.Event;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -66,11 +69,11 @@ public class ViewEventDebug extends AppCompatActivity {
         if(event.getEventType() == 1) {
             cardView.setBackgroundColor(Color.parseColor("#4287f5"));
             progressBar.setProgress(event.getProgress());
+            viewGroup.removeView(findViewById(R.id.textDescription2));
         }
         if(event.getEventType() != 1) {
             viewGroup.removeView(findViewById(R.id.seekBar));
             viewGroup.removeView(findViewById(R.id.progress));
-            viewGroup.removeView(findViewById(R.id.textDescription2));
         }
         TextView title = (TextView) findViewById(R.id.textTitle);
         title.setText(event.getName());
@@ -81,14 +84,39 @@ public class ViewEventDebug extends AppCompatActivity {
             city = addresses.get(0).getLocality();
             state = addresses.get(0).getAdminArea();
             country = addresses.get(0).getCountryName();
+
         }
         catch(Exception e) {
 
         }
-        if(event.getEventType() != 1) {
-            TextView loc = (TextView) findViewById(R.id.textDescription2);
+
+        addresses = new ArrayList<>();
+        try {
+            addresses = geocoder.getFromLocation(event.getLatitude(),event.getLongitude(), 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        android.location.Address address = null;
+        try {
+            address = addresses.get(0);
+        } catch (IndexOutOfBoundsException e) {
+
+        }
+
+        if (address != null) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(address.getAddressLine(0));
+            for (int i = 1; i <= address.getMaxAddressLineIndex(); i++){
+                sb.append("\n" + address.getAddressLine(i));
+            }
+            if(event.getEventType() != 1) {
+            /*TextView loc = (TextView) findViewById(R.id.textDescription2);
             //
-            loc.setText(city+", "+state+", "+country);
+            loc.setText(city+", "+state+", "+country);*/
+                TextView loc = (TextView) findViewById(R.id.textDescription2);
+                loc.setText(sb.toString());
+            }
         }
 
         //
@@ -97,8 +125,12 @@ public class ViewEventDebug extends AppCompatActivity {
         TextView date = (TextView) findViewById(R.id.textDate);
         Calendar c = Calendar.getInstance();
         c.setTime(event.getDate());
+        int hour = c.get(Calendar.HOUR);
+        if(hour == 0) {
+            hour = 12;
+        }
         String newText = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.DAY_OF_MONTH)
-                + ", " + c.get(Calendar.YEAR) + ", " + c.get(Calendar.HOUR)
+                + ", " + c.get(Calendar.YEAR) + ", " + hour
                 + ":" + String.format("%02d", c.get(Calendar.MINUTE)) + " " + c.getDisplayName(Calendar.AM_PM, Calendar.LONG, Locale.getDefault());
         date.setText(newText);
 

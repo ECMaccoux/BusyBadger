@@ -40,12 +40,15 @@ public class PlannerFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_planner, container, false);
 
+        manager = getChildFragmentManager();
+
         return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         db = AppDatabase.getAppDatabase(getContext());
+        removeCards();
         addCards();
     }
 
@@ -60,7 +63,6 @@ public class PlannerFragment extends Fragment {
             noEvents.setAlpha(0.5f);
         }
 
-        manager = getChildFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
 
         for (Event event : events) {
@@ -77,6 +79,15 @@ public class PlannerFragment extends Fragment {
         }
 
         ft.commit();
+    }
+
+    public void removeCards() {
+        for(Fragment fragment : manager.getFragments()) {
+            if(fragment != null) {
+                manager.beginTransaction().remove(fragment).commit();
+                manager.popBackStackImmediate();
+            }
+        }
     }
 
 }

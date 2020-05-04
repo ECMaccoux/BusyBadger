@@ -313,6 +313,7 @@ public class TodayFragment extends Fragment implements CalendarFragment.Calendar
         for(Fragment fragment : manager.getFragments()) {
             if(fragment != null) {
                 manager.beginTransaction().remove(fragment).commit();
+                manager.popBackStackImmediate();
             }
         }
     }
