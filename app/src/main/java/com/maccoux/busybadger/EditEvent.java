@@ -254,7 +254,6 @@ public class EditEvent extends AppCompatActivity {
 
         @Override
         protected Integer doInBackground(Void... params) {
-            //android.os.Debug.waitForDebugger();
             db.eventDao().update(event);
             return 0;
         }

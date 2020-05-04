@@ -240,29 +240,37 @@ public class AddClass extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please enter a name for this class", Toast.LENGTH_SHORT).show();
             return;
         }
-        c.setName(name);
-
-        if(monSet) {
-            c.setMonday(mon);
-        }
-        if(tuesSet) {
-            c.setTuesday(tues);
-        }
-        if(wedSet) {
-            c.setWednesday(wed);
-        }
-        if(thursSet) {
-            c.setThursday(thurs);
-        }
-        if(friSet) {
-            c.setFriday(fri);
-        }
-
         Date begin = new Date();
         begin.setHours(0);
         begin.setMinutes(0);
         begin.setSeconds(0);
         c.setBegin(begin);
+        c.setName(name);
+        boolean[] checkOptions = new boolean[]{false,true,false,false};
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(c.getBegin());
+
+        if(monSet) {
+            c.setMonday(mon);
+            cal.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY);
+        }
+        if(tuesSet) {
+            c.setTuesday(tues);
+            cal.set(Calendar.DAY_OF_WEEK,Calendar.TUESDAY);
+        }
+        if(wedSet) {
+            c.setWednesday(wed);
+            cal.set(Calendar.DAY_OF_WEEK,Calendar.WEDNESDAY);
+        }
+        if(thursSet) {
+            c.setThursday(thurs);
+            cal.set(Calendar.DAY_OF_WEEK,Calendar.THURSDAY);
+        }
+        if(friSet) {
+            c.setFriday(fri);
+            cal.set(Calendar.DAY_OF_WEEK,Calendar.FRIDAY);
+        }
+
 
         EditText editColorCode = (EditText)findViewById(R.id.editColorCode);
         String colorCode;
@@ -283,9 +291,7 @@ public class AddClass extends AppCompatActivity {
 
         new InsertClassAsyncTask(this, c).execute();
 
-        boolean[] checkOptions = new boolean[]{false,true,false,false};
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(c.getBegin());
+
         RemindersClass reminder = new RemindersClass(cal, checkOptions,c, this);
         reminder.setAlarmRepeat(604800000); // one week
         //reminder.setAlarm();
